@@ -1,3 +1,4 @@
+// commit by github
 
 <?php
 class dataBase
