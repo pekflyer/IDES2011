@@ -3,13 +3,15 @@
 
 /*
 *This file handles all the database queries. 
-*
+*@author: Allan Yong
+*@date: March 31, 2011
 */
 
 class dataBase
 {
 
 	private $mysqlConnec;
+	
 	function __construct()
 	{
 			$this->mysqlConnec = mysql_connect('localhost', 'root', 'root');
@@ -40,7 +42,7 @@ class dataBase
 	{}
 	
 	/*
-	*
+	*gets the information from student table
 	*
 	*/
 	function query_getStudents()
@@ -76,8 +78,8 @@ class dataBase
 	}
 	
 	/*
-	*
-	*
+	*This function gets an id and passed into this function to get the image pathes
+	*@$stu_id, the id of the student from student table to picture table
 	*/
 	function query_getPic($stu_ID)
 	{
