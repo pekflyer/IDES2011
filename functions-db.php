@@ -1,6 +1,11 @@
-// commit by 
 
 <?php
+
+/*
+*This file handles all the database queries. 
+*
+*/
+
 class dataBase
 {
 
