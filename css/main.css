@@ -1,0 +1,344 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face
+{
+    font-family: Titil;
+    src: url('../fonts/TitilliumMaps26L-1wt.eot');
+    src: local(TitilliumMaps26L-1wt), url('../fonts/TitilliumMaps26L-1wt.ttf') format('opentype');
+}
+
+@font-face
+{
+    font-family: PLOVR;
+    src: url('../fonts/PLOVR.eot');
+    src: local(PLOVR), url('../fonts/PLOVR.ttf') format('opentype');
+}
+
+
+a:link {color:#0193c9; text-decoration:none;}      /* unvisited link */
+a:visited {color:#0193c9;}  /* visited link */
+a:hover {color:#027ca9;}  /* mouse over link */
+a:active {color:#01678d;}  /* selected link */
+
+
+div.full
+{	
+	width: 1102px;
+	height: 600px;
+	margin-top: 0px;
+  	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}
+
+div.header
+{
+	background: url(../images/header.jpg) no-repeat;
+	width: 267px;
+	height: 57px;
+	margin-left: 18px;
+	margin-top: 20px;
+	
+}
+
+ul.mainContent 
+{
+  	list-style: none;
+  	padding: 0;
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+ul.mainContent li{
+  float: left;
+  padding: 10px;
+  margin-right: 0px;
+  background-color:#f6f6f6;
+  height: 600px;
+  width:40px;
+  overflow:hidden;
+}
+
+ul.mainContent li a{
+  height: 525px;
+  width: 40px;
+}
+
+/*   -------------------------- 
+ 		Navigation 				*/
+div.nav
+{
+	width: 40px;
+	height: 525px;
+	margin-top: 10px;
+}
+
+#nav_home
+{
+	background:url(../images/nav_info.gif) no-repeat;
+	
+}
+
+#nav_projects
+{
+	background:url(../images/nav_projects.gif) no-repeat;
+	
+}
+
+#nav_alumni
+{
+	background:url(../images/nav_alumni.gif) no-repeat;
+	
+}
+
+#nav_sponsors
+{
+	background:url(../images/nav_sponsors.gif) no-repeat;
+
+}
+
+#nav_staff
+{
+	background:url(../images/nav_staff.gif) no-repeat;
+}
+
+ul.mainContent li span
+{
+	font-family: Titil;
+/*	writing-mode: tb-rl;
+	-webkit-transform: rotate(90deg); 
+	-moz-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+    transform: rotate(90deg);*/
+}
+
+/*ul.mainContent li img{
+  padding-left: 2px;
+  /*border: 1px solid #656565;
+}*/
+
+
+#home
+{
+  width: 840px;
+  background:#c2d933;
+}
+
+#projects
+{
+  	/*width: 840px; */
+	background:#099ec9;
+}
+
+#alumni
+{
+  background:#fdba14;
+}
+
+#sponsor
+{
+	background:#d0d0d0;
+}
+
+#staff
+{
+  background:#5d5d5d;
+}
+
+
+/* -------------------------- 
+ 		Content 			 
+   --------------------------*/
+.content
+{
+	font-family:Titil;
+	margin-top: 0px;
+	padding-top: 0px;
+	margin-left: 50px;
+	width: 790px;
+	height: 525px;
+}
+
+#theme
+{
+	font-family:Titil;
+	/*width:840px;*/
+	/*height:1221px;*/
+	margin-left:0;
+  	margin-right:auto;
+	padding-top:100px;
+}
+
+#map
+{
+	float:right;
+	margin-left:35px;
+	margin-right:35px;
+}
+
+#map p{
+	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-size:18px;
+	margin:0;
+	width:inherit;
+	margin-top:15px;
+	margin-bottom:15px;
+}
+
+ul li p{
+  margin: 0;
+  padding: 0;
+  width: 210px;
+  display: block;
+  margin-left: 30px;
+}
+
+
+/* -------------------------- 
+ 		Projects 			 
+   --------------------------*/
+
+
+/*///// FILTERS ////////*/
+.sorting_box
+{
+	display:block;
+	font-family: Titil;
+}
+	.sorting_box fieldset
+	{
+		border:  none;
+		margin-top: 15px;
+		font-size: 14pt;
+	}
+
+	.sorting_box #groups input
+	{
+		display: none;
+	}
+	
+	.sorting_box label
+	{
+		cursor:pointer;
+		display:inline-block;
+		font-size:12pt;
+		height:36px;
+		margin-right:5px;
+		margin-top:4px;
+		padding-right:11px;
+		padding-top:17px;
+	}
+	
+	.sorting_box label.focused
+	{
+	    background-color: #EEEEEE;
+	}
+		/* unchecked labels */
+		label#all
+		{
+		}
+		
+		label#rim
+		{
+			background-image: url(../images/rim.gif);
+			background-repeat: no-repeat;
+			width: 105px;
+			padding-left: 105px;	
+		}
+		
+		label#omnr
+		{
+		}
+		
+		label#cpc
+		{
+		}
+		
+		label#st
+		{
+		}
+		
+		label#lt
+		{
+		}
+	
+		/* checked labels */
+		label#all .focused
+		{
+		}
+		
+		label#rim .focused
+		{
+		}
+		
+		label#omnr .focused
+		{
+		}
+		
+		label#cpc .focused
+		{
+		}
+		
+		label#st .focused
+		{
+		}
+		
+		label#lt .focused
+		{
+		}
+
+/*/////// GALLERY //////////*/
+
+ul.image-grid {
+  padding-left: 5px;
+  width: 700px;
+}
+
+ul.image-grid:after {
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
+  clear: both;
+}
+
+ul.image-grid li {
+  color:#686F74;
+  float:left;
+  height:80px;
+  padding:0;
+  margin-bottom:9px;
+  margin-left:9px;
+  margin-right:1px;
+  margin-top:0;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  text-align:center;
+  width:80px;
+  position:relative;
+/*  overflow: hidden;
+*/}
+ul.image-grid li img{
+	
+}
+
+
+
+ul.image-grid li .StuName{
+	position:absolute;
+ 	background-color:#333;
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	bottom:0;
+	right:0;
+	width:100%;
+	z-index:5;
+	line-height:10px;
+	color:#fff;
+	}
+
+.StuName strong, 
+.StuName span {
+
+	font-size:xx-small;  
+}
