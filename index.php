@@ -100,8 +100,8 @@
 		jQuery(document).ready(function() 
 		{
 			lastBlock = $("#home");
-			maxWidth = 840;
-			minWidth = 40;	
+			maxWidth = 740;
+			minWidth = 30;	
 			
 			//$(lastBlock).animate({width: maxWidth+"px"}, { queue:false, duration:400 });
 			
@@ -166,7 +166,7 @@
 							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'">';
 							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" />';
 							echo '<div class="StuName"><strong>'. $row["stu_fname"] .'</strong> ';
-							echo '<span data-type="'.$row["std_lname"].'">'.$row["std_lname"].'</span></div>';
+							echo '<span data-type="last">'.$row["std_lname"].'</span></div>';
 							echo '</li>';
 							$i++;
 						}
@@ -176,14 +176,17 @@
 			      </ul>
 			      <div class="sorting_box" id="filter">
 			            <fieldset id="groups">
-			              <legend>Groups</legend>
-			              <label id="all"><input type="radio" name="group" value="all" checked="checked">All</label>
+			              <legend>View:</legend>
+			              <label id="all"><input type="radio" name="group" value="all" checked="checked">All Students</label>
+                          <legend>By group:</legend>
+                          <div id="groupBox">
 			              <label id="rim"><input type="radio" name="group" value="rim">Mobile Life</label>
 			              <label id="omnr"><input type="radio" name="group" value="omnr">OMNR: Firetactics</label>
 			              <label id="cpc"><input type="radio" name="group" value="cpc">CPC: Adaptive Sports</label>
 			              <label id="st"><input type="radio" name="group" value="st">Smart Technologies: </label>
 			              <label id="lt"><input type="radio" name="group" value="lt">Lota Renovación</label>
                           <label id="Teknion"><input type="radio" name="group" value="Teknion">Workspace Next</label>
+                          </div>
 			            </fieldset>
 			            <fieldset id="fullnames">
 			              <legend>Sort by Name</legend>

@@ -24,8 +24,8 @@ a:active {color:#01678d;}  /* selected link */
 
 div.full
 {	
-	width: 1102px;
-	height: 600px;
+	width: 960px;
+	height: 1000px;
 	margin-top: 0px;
   	margin-right: auto;
 	margin-bottom: auto;
@@ -34,12 +34,8 @@ div.full
 
 div.header
 {
-	background: url(../images/header.jpg) no-repeat;
-	width: 267px;
-	height: 57px;
-	margin-left: 18px;
-	margin-top: 20px;
-	
+	background: url(../images/Header.gif) no-repeat;
+	height: 100px;	
 }
 
 ul.mainContent 
@@ -54,22 +50,22 @@ ul.mainContent li{
   padding: 10px;
   margin-right: 0px;
   background-color:#f6f6f6;
-  height: 600px;
-  width:40px;
+  height: 880px;
+  width:30px;
   overflow:hidden;
 }
 
 ul.mainContent li a{
   height: 525px;
-  width: 40px;
+  width: 30px;
 }
 
 /*   -------------------------- 
  		Navigation 				*/
 div.nav
 {
-	width: 40px;
-	height: 525px;
+	width: 30px;
+	height: 490px;
 	margin-top: 10px;
 }
 
@@ -120,7 +116,7 @@ ul.mainContent li span
 
 #home
 {
-  width: 840px;
+  width: 740px;
   background:#c2d933;
 }
 
@@ -155,7 +151,7 @@ ul.mainContent li span
 	margin-top: 0px;
 	padding-top: 0px;
 	margin-left: 50px;
-	width: 790px;
+	width: 710px;
 	height: 525px;
 }
 
@@ -177,8 +173,8 @@ ul.mainContent li span
 }
 
 #map p{
-	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size:18px;
+/*	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
+*/	font-size:18px;
 	margin:0;
 	width:inherit;
 	margin-top:15px;
@@ -202,14 +198,40 @@ ul li p{
 /*///// FILTERS ////////*/
 .sorting_box
 {
-	display:block;
-	font-family: Titil;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:8pt;
+	height:55px;
 }
+	.sorting_box #groupBox{
+		height:100%;
+		width:290px;
+		padding:0;
+		margin:0;
+	}
+	.sorting_box #groups *{
+		display:inline-block;
+		float:left;
+		height:20px;
+		padding-right:10px;
+
+	}
+	
+
+	
 	.sorting_box fieldset
 	{
 		border:  none;
-		margin-top: 15px;
-		font-size: 14pt;
+		display:inline-block;
+		float:left;	
+	}
+	
+	.sorting_box #fullnames
+	{
+
+	}
+	
+	.sorting_box legend{
+
 	}
 
 	.sorting_box #groups input
@@ -219,14 +241,8 @@ ul li p{
 	
 	.sorting_box label
 	{
+		color:#FFF;
 		cursor:pointer;
-		display:inline-block;
-		font-size:12pt;
-		height:36px;
-		margin-right:5px;
-		margin-top:4px;
-		padding-right:11px;
-		padding-top:17px;
 	}
 	
 	.sorting_box label.focused
@@ -240,10 +256,6 @@ ul li p{
 		
 		label#rim
 		{
-			background-image: url(../images/rim.gif);
-			background-repeat: no-repeat;
-			width: 105px;
-			padding-left: 105px;	
 		}
 		
 		label#omnr
@@ -337,8 +349,7 @@ ul.image-grid li .StuName{
 	color:#fff;
 	}
 
-.StuName strong, 
-.StuName span {
-
+.StuName {
+	font-family:Arial, Helvetica, sans-serif;
 	font-size:xx-small;  
 }
