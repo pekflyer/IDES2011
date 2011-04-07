@@ -14,14 +14,12 @@ class dataBase
 	
 	function __construct()
 	{
-			$this->mysqlConnec = mysql_connect('localhost', 'root', 'root');
+			$this->mysqlConnec = mysql_connect('localhost', 'root', 'things');
 			
 			if (!$this->mysqlConnec) {
 		    die('Could not connect: ' . mysql_error());
 		}
 		
-		echo 'Connected successfully';
-		echo "<BR />";
 		
 		$db_selected = mysql_select_db('ides_db', $this->mysqlConnec);
 		
@@ -32,10 +30,6 @@ class dataBase
 		$result = mysql_list_tables("ides_db");
 		$num_rows = mysql_num_rows($result);
 	
-		for ($i = 0; $i < $num_rows; $i++) {
-		    echo "Table: ", mysql_tablename($result, $i), "\n";
-		    echo "<BR />";
-		}
 	}
 	
 	function __destruct()
@@ -47,14 +41,8 @@ class dataBase
 	*/
 	function query_getStudents()
 	{
-		$query_string = "SELECT * FROM studentTable ORDER BY stu_id";
+		$query_string = "SELECT * FROM studentTable ORDER BY stu_fname";
 		$query = mysql_query($query_string, $this->mysqlConnec);
-		while($row = mysql_fetch_object($query)){ 
-			//print($row);
-			 echo "<xmp>";
-			 var_dump($row);
-			 echo "</xmp>";
-		}
 		return $query;
 	}
 	

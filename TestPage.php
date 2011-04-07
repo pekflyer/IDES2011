@@ -99,7 +99,7 @@
 		
 		jQuery(document).ready(function() 
 		{
-			lastBlock = $("#home");
+			lastBlock = $("#projects");
 			maxWidth = 840;
 			minWidth = 40;	
 			
@@ -117,7 +117,7 @@
 				}
 			);
 			
-			$('.sorting_box #groups :radio').focus(updateSelectedStyle);
+/*			$('.sorting_box #groups :radio').focus(updateSelectedStyle);
        		$('.sorting_box #groups :radio').blur(updateSelectedStyle);
         	$('.sorting_box #groups :radio').change(updateSelectedStyle);
     	
@@ -126,53 +126,39 @@
 		        $('.sorting_box #groups :radio').parent().removeClass('focused');//.next().removeClass('focused');
 		        $('.sorting_box #groups :radio:checked').parent().addClass('focused');//.next().addClass('focused');
 		    }
-			
+			*/
 		});
-		
 	</script>	
 	<div class="full">
 		<div class="header"></div>
 		<ul class="mainContent">
 			<li class="mainNav" id="home" title="Home">
 			  <div class="nav" id="nav_home"> 
-		  	  <div class="content">
-			        <div id="theme">
-                    	
-                      <div id="map">
-                        	<p>
-                            	APRIL 16TH-19TH, 10AM-5MP<br />
-                                UNIVERSITY CENTRE GALLERIA
-                            </p>
-                        	<img src="images/home/map.png" />
-                            <P>
-                            	PARKING AVAILABLE IN LOT 2<br />
-								FREE PARKING ON WEEKENDS
-                            </P>
-                      </div>
-		            <img src="images/home/exhibitlogo_green.png" /></div>
+			  	<div class="content">
+			        <div id="theme"></div>
 			    </div>
 			  </div>    
-      </li>
+			</li>
 			<li class="mainNav" id="projects" title="Projects">
 			  <div class="nav" id="nav_projects">
 			    <div class="content">
 			      <ul id="students" class="image-grid">
 				
-                
                 	<?php
 					 	$query =  $db_control->query_getStudents();
 						$i=1;
 						while($row = mysql_fetch_array($query)){ 
 							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'">';
 							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" />';
-							echo '<div class="StuName"><strong>'. $row["stu_fname"] .'</strong> ';
-							echo '<span data-type="'.$row["std_lname"].'">'.$row["std_lname"].'</span></div>';
+							echo '<strong>'. $row["stu_fname"] .'</strong>';
+							echo '<span data-type="'.$row["std_lname"].'">'.$row["std_lname"].'</span>';
 							echo '</li>';
 							$i++;
 						}
 	
 					?>
-			
+					
+
 			      </ul>
 			      <div class="sorting_box" id="filter">
 			            <fieldset id="groups">
@@ -197,57 +183,19 @@
 			<li class="mainNav" id="alumni" title="Alumni">
 			  <div class="nav" id="nav_alumni">
 			  	<div class="content">
-                	Alumni Night<br />APRIL 16TH, 2011, 5–8PM, UNIVERSITY CENTRE GALLERIA<br/><br/>
-                    	<table width="700" border="0">
-						  <tr>
-  						 	 <td><center>
-                             	<img src="images/Ostiguy.jpg"  /><br /><br /><br />
-                                <img src="images/CSeal.png" width="120" height="120" alt="Cseal" /></center><br /><br />
-                                Complimentary refreshments.<br/>
-                                Free parking available in Lot P2.</td>
- 						 	  <td width="490"><br /><br />
-                              The School of Industrial Design and the Carleton University Alumni Association, Industrial Design 	Chapter, invite you to the annual Alumni Night, on April 16th, 2011 at 5PM, to honour the contributions of Jacques Ostiguy to the School of Industrial Design. Featuring presentations by Floyd Pushelberg and many others.<br/>
-Please register at alumni.carleton.ca/events<br/>
-	<img src="images/bar.jpg" alt="" width="490" height="3" /><br/>
-<img src="images/map.jpg" width="490" height="237" alt="map" border='1' /></td>
-						 </tr>
-						</table>
-                       	
 			    </div>	  
 			  </div>
 			</li>
 			<li class="mainNav" id="sponsor" title="Sponsors">
-			  <div class="nav" id="nav_sponsors">
+				<div class="nav" id="nav_sponsors">
 			  		<div class="content">
-                    	Sponsors + Thanks<br /><br />The School of Industrial Design and the 2010-11 Bachelor of Industrial Design graduating class would like to sincerely thank this year’s collaborators and sponsors for their contributions and support.
-                    	
 			    	</div>	  
 			  	</div>  
 			</li>
 			<li class="mainNav" id="staff" title="Staff and Supporters">
 				<div class="nav" id="nav_staff">
 			  		<div class="content">
-			        	Staff + Support<br /><br />In addition to their sponsors, the 2010-11 Bachelor of Industrial Design graduating class would like to also thank the faculty and staff at the School of Industrial Design.
-                       	<br /><br />
-                        <table width="700" border="0">
-                          <tr>
-                            <td  >FACULTY:<br />
-                              Thomas GarveyDirector,<br /> School of Industrial Design<br />
-                              Brian BurnsAssociate Professor,<br /> School of Industrial Design<br />
-                              WonJoon ChungAssociate Professor,<br /> School of Industrial Design<br />
-                              Stephen FieldInstructor,<br /> School of Industrial Design<br />
-                              Lois FrankelAssociate Professor,<br /> School of Industrial Design<br />
-                              Bjarki HallgrimssonAssociate Professor,<br /> School of Industrial Design<br />
-                            Lorenzo ImbesiAssociate Professor,<br /> School of Industrial Design</td>
-                            <td>STAFF:<br />
-                              Diane SmythAdministrator,<br /> School of Industrial Design<br />
-                              Valerie DaleyAdministrative Assistant,<br /> School of Industrial Design<br />
-                              Walter ZanettiChief Technician,<br /> School of Industrial Design<br />
-                              Jim DewarMachine Shop Technician,<br /> School of Industrial Design<br />
-                              Terry FlahertyWood Shop Technician,<br /> School of Industrial Design<br />
-                            Andrew PullinComputer Technician,<br /> School of Industrial Design</td>
-                          </tr>
-                          </table>
+			        	
 			    	</div>	  
 			  	</div> 
 			</li>
