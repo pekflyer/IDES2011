@@ -100,7 +100,7 @@
 		jQuery(document).ready(function() 
 		{
 			lastBlock = $("#home");
-			maxWidth = 740;
+			maxWidth = 730;
 			minWidth = 30;	
 			
 			//$(lastBlock).animate({width: maxWidth+"px"}, { queue:false, duration:400 });
@@ -140,6 +140,14 @@
                     	
                       <div id="map">
 						<img src="images/home/map.png" />
+                        <hr />
+                        <p>Industrial designers improve upon existing products and develop new products that 
+                        	enhance our ever-changing lifestyles. From concept to production, Carleton University 
+                            Industrial Design students continually define, refine, and redefine problems and solutions.</p>
+                           <p>The School of Industrial Design welcomes you to visit the 33rd Annual Graduation 
+                           Exhibition, to explore student projects completed within the Bachelor of 
+                           Industrial Design program.</p>
+                           <p>Parking available in Lot P2. Free weekend parking. Free admission.</p>
                       </div>
 		            <img src="images/home/exhibitlogo_green.png" /></div>
 			    </div>
@@ -192,22 +200,19 @@
 			<li class="mainNav" id="alumni" title="Alumni">
 			  <div class="nav" id="nav_alumni">
 			  	<div class="content">
-                	Alumni Night<br />APRIL 16TH, 2011, 5–8PM, UNIVERSITY CENTRE GALLERIA<br/><br/>
-                    	<table width="700" border="0">
-						  <tr>
-  						 	 <td><center>
-                             	<img src="images/Ostiguy.jpg"  /><br /><br /><br />
-                                <img src="images/CSeal.png" width="120" height="120" alt="Cseal" /></center><br /><br />
-                                Complimentary refreshments.<br/>
-                                Free parking available in Lot P2.</td>
- 						 	  <td width="490"><br /><br />
-                              The School of Industrial Design and the Carleton University Alumni Association, Industrial Design 	Chapter, invite you to the annual Alumni Night, on April 16th, 2011 at 5PM, to honour the contributions of Jacques Ostiguy to the School of Industrial Design. Featuring presentations by Floyd Pushelberg and many others.<br/>
-Please register at alumni.carleton.ca/events<br/>
-	<img src="images/bar.jpg" alt="" width="490" height="3" /><br/>
-<img src="images/map.jpg" width="490" height="237" alt="map" border='1' /></td>
-						 </tr>
-						</table>
-                       	
+                       	<div id="#AlumniTitle">
+                        	<p>Alumni Night</p>
+                            <p>APRIL 16TH, 2011, 5–8PM, UNIVERSITY CENTRE GALLERIA</p>
+                        </div>
+                        <div id="AlumniMap">
+                        	<p>The School of Industrial Design and the Carleton University Alumni Association, Industrial Design Chapter, invite you to the annual Alumni Night, on April 16th, 2011 at 5PM, to honour the contributions of Jacques Ostiguy to the School of Industrial Design. Featuring presentations by Floyd Pushelberg and many others.</p>
+                            <p>Please register at <a href="alumni.carleton.ca/events">alumni.carleton.ca/events</a></p>
+                            <hr />
+                            <img src="images/Alumni Night/Map.png" />
+                        </div>
+                        <div id="AlumniPics">
+                        
+                        </div>
 			    </div>	  
 			  </div>
 			</li>
