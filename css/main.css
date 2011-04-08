@@ -71,31 +71,31 @@ div.nav
 
 #nav_home
 {
-	background:url(../images/nav_info.gif) no-repeat;
+	background:url(../images/Nav/exhibit.png) no-repeat;
 	
 }
 
 #nav_projects
 {
-	background:url(../images/nav_projects.gif) no-repeat;
+	background:url(../images/Nav/Student.png) no-repeat;
 	
 }
 
 #nav_alumni
 {
-	background:url(../images/nav_alumni.gif) no-repeat;
+	background:url(../images/Nav/alumni.png) no-repeat;
 	
 }
 
 #nav_sponsors
 {
-	background:url(../images/nav_sponsors.gif) no-repeat;
+	background:url(../images/Nav/sponsors.png) no-repeat;
 
 }
 
 #nav_staff
 {
-	background:url(../images/nav_staff.gif) no-repeat;
+	background:url(../images/Nav/staff.png) no-repeat;
 }
 
 ul.mainContent li span
@@ -128,7 +128,7 @@ ul.mainContent li span
 
 #alumni
 {
-  background:#fdba14;
+ 	background:#fdba14;
 }
 
 #sponsor
@@ -138,7 +138,7 @@ ul.mainContent li span
 
 #staff
 {
-  background:#5d5d5d;
+  	background:#5d5d5d;
 }
 
 
@@ -353,3 +353,101 @@ ul.image-grid li .StuName{
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:xx-small;  
 }
+
+
+/*/////// CSS FOR STUDENT PAGES //////////*/
+div.project_topbar
+{
+	position:absolute;
+	top: 20px;
+	left: 20px;
+	width: 475px;
+	height: 70px;
+	padding: 0 0 0 0;
+}
+div.project_prevnext
+{
+	position:absolute;
+	top: 40px;
+	left: 495px;
+	width: 220px;
+	height: 50px;
+	font-family:Georgia, Titil;
+	font-size:12pt;
+	padding: 0 0 0 0;
+}
+div.project_left
+{
+	position:absolute;
+	top: 90px;
+	left: 20px;
+	width: 110px;
+	height: 350px;
+	font-family:Georgia, Titil;
+	font-size:9pt;
+	padding: 0 0 0 0;
+}
+div.project_right
+{
+	position:absolute;
+	top: 90px;
+	left: 470px;
+	width: 220px;
+	height: 260px;
+	font-family:Georgia, Titil;
+	font-size:12pt;
+	font-style:normal;
+	overflow:scroll;
+}
+div.bigimage
+{
+	position:absolute;
+	top: 90px;
+	left: 150px;
+	padding: 0 0 0 0;
+	width: 300px;
+	height: 330px;
+}
+div.bigimage img
+{
+	outline:none;
+	width:300px;
+	height:330px;
+	padding: 0 0 0 0;
+}
+
+div.smallimage
+{
+	position:absolute;
+	top: 350px;
+	left: 460px;
+	padding: 0 0 0 0;
+	width: 240px;
+	height: 80px;
+}
+div.portrait
+{
+	padding: 0 0 0 0;
+	width: 110px;
+	height: 80px;
+}
+span.grp
+{
+	font-family:Georgia, Titil;
+	font-size:24pt;
+	font-style:italic;
+	line-height:100%;
+}
+span.stu
+{
+	font-family:Georgia, Titil;
+	font-size:16pt;
+	font-weight:bold;
+	line-height:100%;
+}
+img.small
+{
+	outline:none;
+	padding: 10 10 10 10;
+}
+
