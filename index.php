@@ -65,8 +65,9 @@
 			// get projects container
 			var $transitionType;
 			var $projects = $('#projects_info');
+			var $projectContent = $('#proj_content');
 			$projects.hide(); // hide at start
-			
+			$projectContent.hide();
 			
 			// clone students to get a second collection
 			var $data = $students.clone();
@@ -82,9 +83,7 @@
 				else 
 				{
 					$transitionType = "In";
-					//$projects.fadeIn("slow");
-				  	
-				  	var $filteredData = $data.find('li[data-type=' + $($filterGroup+":checked").val() + ']');
+					var $filteredData = $data.find('li[data-type=' + $($filterGroup+":checked").val() + ']');
 				}
 			
 				// sorted by first name
@@ -115,26 +114,28 @@
 			{
 				if($transitionType == "In") 
 				{
-					//$projects.slideIn();
-					$projects.slideDown("slow", runQuicksand());
+					$projects.delay(601).slideDown("slow");
+					runQuicksand();
+					$projectContent.delay(1201).slideDown("slow");
+					
 				}
 				else 
 				{
-					//$projects.slideOut();
-					$projects.slideUp("slow", runQuicksand());
+					$projects.slideUp("slow");
+					$projectContent.delay(500).slideUp("slow", runQuicksand());
 				}
+				
+				
 			}
 			
+			//Quicksand
 			function runQuicksand()
 			{
-				setTimeout(function()
+				$students.quicksand($sortedData, 
 				{
-					$students.quicksand($sortedData, 
-					{
-						duration: 600,
-						easing: 'easeInOutQuad'
-					})
-				}, 601);
+					duration: 600,
+					easing: 'easeInOutQuad'
+				});
 			}
 			
 			reOrganize();
@@ -213,7 +214,8 @@
                 	<?php
 					 	$query =  $db_control->query_getStudents();
 						$i=1;
-						while($row = mysql_fetch_array($query)){ 
+						while($row = mysql_fetch_array($query))
+						{ 
 							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'">';
 							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" />';
 							echo '<div class="StuName"><strong>'. $row["stu_fname"] .'</strong> ';
@@ -224,6 +226,9 @@
 					?>
 			
 			      </ul>
+			      <div id="proj_content">
+			      	<div id="proj_logo"></div>
+			      </div>
 			      <div class="sorting_box" id="filter">
 			            <fieldset id="groups">
 			              <legend>View:</legend>

@@ -269,10 +269,11 @@ ul li p{
 			background: url(../images/Nav/next_over.gif) no-repeat;
 		}
 
-#proj_desc
+#proj_content
 {
 	overflow: hidden;
 	margin: 5px 20px;
+	height: 100px;
 }
 	#proj_logo
 	{
@@ -372,8 +373,9 @@ ul li p{
 /*/////// GALLERY //////////*/
 
 ul.image-grid {
-  padding-left: 5px;
-  width: 700px;
+	padding-top: 	15px;
+  	padding-left: 	5px;
+  	width: 			700px;
 }
 
 ul.image-grid:after {
