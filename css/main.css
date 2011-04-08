@@ -25,7 +25,7 @@ a:active {color:#01678d;}  /* selected link */
 div.full
 {	
 	width: 960px;
-	height: 600px;
+	height: 1000px;
 	margin-top: 0px;
   	margin-right: auto;
 	margin-bottom: auto;
@@ -34,7 +34,7 @@ div.full
 
 div.header
 {
-	background:url(../images/header/Header.gif) no-repeat;
+	background: url(../images/Header.gif) no-repeat;
 	height: 100px;	
 }
 
@@ -50,13 +50,13 @@ ul.mainContent li{
   padding: 10px;
   margin-right: 0px;
   background-color:#f6f6f6;
-  height: 500px;
+  height: 880px;
   width:30px;
   overflow:hidden;
 }
 
 ul.mainContent li a{
-  height: 500px;
+  height: 525px;
   width: 30px;
 }
 
@@ -85,15 +85,6 @@ div.nav
 {
 	background:url(../images/Nav/alumni.png) no-repeat;
 	
-}
-
-#nav_alumni p
-{
-	font-family:Georgia, "Times New Roman", Times, serif;
-	font-size:12px;
-	padding:0 0 10px 0;
-	margin:0;
-	width:100%;
 }
 
 #nav_sponsors
@@ -140,19 +131,6 @@ ul.mainContent li span
  	background:#fdba14;
 }
 
-#AlumniMap
-{
-	float:right;
-	margin:0 0 0 20px;
-	width:490px;
-}
-
-#AlumniMap p
-{
-
-}
-
-
 #sponsor
 {
 	background:#d0d0d0;
@@ -164,17 +142,19 @@ ul.mainContent li span
 }
 
 
+
 /* -------------------------- 
  		Content 			 
    --------------------------*/
+   
 .content
 {
 	font-family:Titil;
 	margin-top: 0px;
 	padding-top: 0px;
 	margin-left: 50px;
-	width: 710px;
-	height: 500px;
+	width: 790px;
+	height: 525px;
 }
 
 #theme
@@ -184,27 +164,19 @@ ul.mainContent li span
 	/*height:1221px;*/
 	margin-left:0;
   	margin-right:auto;
-	padding-top:66px;
+	padding-top:100px;
 }
 
 #map
 {
 	float:right;
-	margin: 15px 50px 0  0;
-	width:310px;
-}
-
-#map hr
-{
-		border:0;
-		height:2.5px;
-		color:#D8E588;
-		background-color:#D8E588;
+	margin-left:35px;
+	margin-right:35px;
 }
 
 #map p{
 	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size:14px;
+	font-size:18px;
 	margin:0;
 	width:inherit;
 	margin-top:15px;
@@ -224,44 +196,102 @@ ul li p{
  		Projects 			 
    --------------------------*/
 
+#projects_info
+{
+	height: 100px;
+	width: 700px;
+	overflow: hidden;
+	color: white;
+	
+}
+	#proj_group
+	{
+		display: block;
+		float: left;
+		width: 454px;
+		height: 81px;
+	}
+	
+	h3#proj_name
+	{
+		margin-top: 0px;
+		height: 40px;
+		background: aqua;
+	}
+	
+	h1#proj_client
+	{
+		margin: 16px 0;
+		height: 20px;
+		background: black;
+	}
+
+	#project_nav
+	{
+		height: 35px;
+		width: 170px;
+		display: block;
+		float: right;
+		margin-right: 20px;
+	}
+		#prevProj
+		{	
+			cursor: pointer;
+			height: 22px;
+			width: 	77px;
+			float: left;
+			border-right-color:white;
+			border-right-style:solid;
+  			border-right-width:2px;
+  			padding-right: 8px;
+  			background: url(../images/Nav/prev_norm.gif) no-repeat;
+		}
+		
+		#prevProj:hover
+		{
+			cursor: pointer;
+			background: green;
+			background: url(../images/Nav/prev_over.gif) no-repeat;
+		}
+		
+		#nextProj
+		{
+			cursor: pointer;
+			background: url(../images/Nav/next_norm.gif) no-repeat;
+			height: 22px;
+			width: 	75px;
+			float: 	right;
+		}
+		#nextProj:hover
+		{
+			cursor: pointer;
+			background: fuchsia;
+			background: url(../images/Nav/next_over.gif) no-repeat;
+		}
+
+#proj_desc
+{
+	overflow: hidden;
+	margin: 5px 20px;
+}
+	#proj_logo
+	{
+		border: dotted gray 1px;
+		width: 220px;
+	}
+
 
 /*///// FILTERS ////////*/
 .sorting_box
 {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:8pt;
-	height:55px;
+	display:block;
+	font-family: Titil;
 }
-	.sorting_box #groupBox{
-		height:100%;
-		width:290px;
-		padding:0;
-		margin:0;
-	}
-	.sorting_box #groups *{
-		display:inline-block;
-		float:left;
-		height:20px;
-		padding-right:10px;
-
-	}
-	
-
-	
 	.sorting_box fieldset
 	{
 		border:  none;
-		display:inline-block;
-		float:left;	
-	}
-	
-	.sorting_box #fullnames
-	{
-
-	}
-	
-	.sorting_box legend{
-
+		margin-top: 15px;
+		font-size: 14pt;
 	}
 
 	.sorting_box #groups input
@@ -271,8 +301,14 @@ ul li p{
 	
 	.sorting_box label
 	{
-		color:#FFF;
 		cursor:pointer;
+		display:inline-block;
+		font-size:12pt;
+		height:36px;
+		margin-right:5px;
+		margin-top:4px;
+		padding-right:11px;
+		padding-top:17px;
 	}
 	
 	.sorting_box label.focused
@@ -286,6 +322,10 @@ ul li p{
 		
 		label#rim
 		{
+			background-image: url(../images/rim.gif);
+			background-repeat: no-repeat;
+			width: 105px;
+			padding-left: 105px;	
 		}
 		
 		label#omnr
@@ -360,6 +400,7 @@ ul.image-grid li {
   position:relative;
 /*  overflow: hidden;
 */}
+
 ul.image-grid li img{
 	
 }
@@ -379,105 +420,8 @@ ul.image-grid li .StuName{
 	color:#fff;
 	}
 
-.StuName {
-	font-family:Arial, Helvetica, sans-serif;
+.StuName strong, 
+.StuName span {
+
 	font-size:xx-small;  
 }
-
-
-/*/////// CSS FOR STUDENT PAGES //////////*/
-div.project_topbar
-{
-	position:absolute;
-	top: 20px;
-	left: 20px;
-	width: 475px;
-	height: 70px;
-	padding: 0 0 0 0;
-}
-div.project_prevnext
-{
-	position:absolute;
-	top: 40px;
-	left: 495px;
-	width: 220px;
-	height: 50px;
-	font-family:Georgia, Titil;
-	font-size:12pt;
-	padding: 0 0 0 0;
-}
-div.project_left
-{
-	position:absolute;
-	top: 90px;
-	left: 20px;
-	width: 110px;
-	height: 350px;
-	font-family:Georgia, Titil;
-	font-size:9pt;
-	padding: 0 0 0 0;
-}
-div.project_right
-{
-	position:absolute;
-	top: 90px;
-	left: 470px;
-	width: 220px;
-	height: 260px;
-	font-family:Georgia, Titil;
-	font-size:12pt;
-	font-style:normal;
-	overflow:scroll;
-}
-div.bigimage
-{
-	position:absolute;
-	top: 90px;
-	left: 150px;
-	padding: 0 0 0 0;
-	width: 300px;
-	height: 330px;
-}
-div.bigimage img
-{
-	outline:none;
-	width:300px;
-	height:330px;
-	padding: 0 0 0 0;
-}
-
-div.smallimage
-{
-	position:absolute;
-	top: 350px;
-	left: 460px;
-	padding: 0 0 0 0;
-	width: 240px;
-	height: 80px;
-}
-div.portrait
-{
-	padding: 0 0 0 0;
-	width: 110px;
-	height: 80px;
-}
-span.grp
-{
-	font-family:Georgia, Titil;
-	font-size:24pt;
-	font-style:italic;
-	line-height:100%;
-}
-span.stu
-{
-	font-family:Georgia, Titil;
-	font-size:16pt;
-	font-weight:bold;
-	line-height:100%;
-}
-img.small
-{
-	outline:none;
-	padding: 10 10 10 10;
-}
-
