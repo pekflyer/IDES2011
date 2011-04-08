@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2011 at 04:50 PM
+-- Generation Time: Apr 08, 2011 at 05:21 PM
 -- Server version: 5.1.44
 -- PHP Version: 5.2.13
 
@@ -12,8 +12,6 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `ides_db`
 --
-CREATE DATABASE `ides_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ides_db`;
 
 -- --------------------------------------------------------
 
@@ -21,19 +19,24 @@ USE `ides_db`;
 -- Table structure for table `groupTable`
 --
 
-CREATE TABLE `groupTable` (
+CREATE TABLE IF NOT EXISTS `groupTable` (
   `grp_id` int(5) NOT NULL AUTO_INCREMENT,
   `grp_name` varchar(255) NOT NULL,
   `grp_website` varchar(255) NOT NULL,
   `grp_abstract` varchar(255) NOT NULL,
   PRIMARY KEY (`grp_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `groupTable`
 --
 
-INSERT INTO `groupTable` VALUES(1, 'RIM', 'http://www.rim.ca', 'we create shit for RIM');
+INSERT INTO `groupTable` VALUES(1, 'CPC: Adaptive Sports', '', '');
+INSERT INTO `groupTable` VALUES(2, 'Teknion: Workspace Next', '', '');
+INSERT INTO `groupTable` VALUES(3, 'OMNR: Firetactics', '', '');
+INSERT INTO `groupTable` VALUES(4, 'OCE: Lota Renovaci&oacute;n', '', '');
+INSERT INTO `groupTable` VALUES(5, 'RIM: Mobile Life', '', '');
+INSERT INTO `groupTable` VALUES(6, 'Smart Technologies: ConnectED', '', '');
 
 -- --------------------------------------------------------
 
@@ -41,7 +44,7 @@ INSERT INTO `groupTable` VALUES(1, 'RIM', 'http://www.rim.ca', 'we create shit f
 -- Table structure for table `photoTable`
 --
 
-CREATE TABLE `photoTable` (
+CREATE TABLE IF NOT EXISTS `photoTable` (
   `studentID` int(5) NOT NULL,
   `headshot` varchar(255) CHARACTER SET latin1 NOT NULL,
   `prjOne` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
@@ -61,7 +64,7 @@ CREATE TABLE `photoTable` (
 -- Table structure for table `studentTable`
 --
 
-CREATE TABLE `studentTable` (
+CREATE TABLE IF NOT EXISTS `studentTable` (
   `stu_id` int(11) NOT NULL AUTO_INCREMENT,
   `stu_fname` varchar(255) NOT NULL,
   `std_lname` varchar(255) NOT NULL,
