@@ -139,15 +139,7 @@
 			        <div id="theme">
                     	
                       <div id="map">
-                        	<p>
-                            	APRIL 16TH-19TH, 10AM-5MP<br />
-                                UNIVERSITY CENTRE GALLERIA
-                            </p>
-                        	<img src="images/home/map.png" />
-                            <P>
-                            	PARKING AVAILABLE IN LOT 2<br />
-								FREE PARKING ON WEEKENDS
-                            </P>
+						<img src="images/home/map.png" />
                       </div>
 		            <img src="images/home/exhibitlogo_green.png" /></div>
 			    </div>
@@ -223,7 +215,6 @@ Please register at alumni.carleton.ca/events<br/>
 			  <div class="nav" id="nav_sponsors">
 			  		<div class="content">
                     	Sponsors + Thanks<br /><br />The School of Industrial Design and the 2010-11 Bachelor of Industrial Design graduating class would like to sincerely thank this year’s collaborators and sponsors for their contributions and support.
-                    	
 			    	</div>	  
 			  	</div>  
 			</li>

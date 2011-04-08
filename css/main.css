@@ -34,7 +34,7 @@ div.full
 
 div.header
 {
-	background: url(../images/Header.gif) no-repeat;
+	background:url(../images/header/Header.gif) no-repeat;
 	height: 100px;	
 }
 
@@ -162,12 +162,13 @@ ul.mainContent li span
 	/*height:1221px;*/
 	margin-left:0;
   	margin-right:auto;
-	padding-top:100px;
+	padding-top:66px;
 }
 
 #map
 {
 	float:right;
+	margin: 18px 35px 0 35px;
 	margin-left:35px;
 	margin-right:35px;
 }
