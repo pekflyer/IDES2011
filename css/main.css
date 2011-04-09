@@ -282,9 +282,10 @@ ul li p{
 }
 	#proj_logo
 	{
-		border: dotted gray 1px;
-		width: 220px;
-		height: 200px;
+		border: dashed lightgrey 2px;
+		width: 200px;
+		height: 140px;
+		margin-left: 20px;
 		background: url(../images/logos/groups/adaptive.png) no-repeat;
 	}
 
