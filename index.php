@@ -52,6 +52,7 @@
 		};
 		})(jQuery);
 		
+		
 		// DOMContentLoaded
 		$(function() 
 		{	
@@ -68,6 +69,7 @@
 			var $projectContent = $('#proj_content');
 			$projects.hide(); // hide at start
 			$projectContent.hide();
+			$('label#all').css('width', 0);
 			
 			// clone students to get a second collection
 			var $data = $students.clone();
@@ -110,22 +112,23 @@
 					});
 			}  
 	
-			function reOrganize()
+			function reOrganize(delay)
 			{
 				if($transitionType == "In") 
 				{
-					$projects.delay(601).slideDown("slow");
 					runQuicksand();
-					$projectContent.delay(1201).slideDown("slow");
+					$projects.delay(601).slideDown("slow");
+					$projectContent.delay(601).slideDown("slow");
+					$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
 					
 				}
 				else 
 				{
+					setTimeout(runQuicksand, 600);
 					$projects.slideUp("slow");
-					$projectContent.delay(500).slideUp("slow", runQuicksand());
-				}
-				
-				
+					$projectContent.slideUp("slow");
+					$('label#all').animate({ width: 0, padding: 0}, "slow");
+				}		
 			}
 			
 			//Quicksand
@@ -136,6 +139,7 @@
 					duration: 600,
 					easing: 'easeInOutQuad'
 				});
+				
 			}
 			
 			reOrganize();

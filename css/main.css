@@ -272,13 +272,20 @@ ul li p{
 #proj_content
 {
 	overflow: hidden;
-	margin: 5px 20px;
+	border-top: #46B9D9 solid 2px;
+	border-bottom: #46B9D9 solid 2px;
+	padding: 20px 0px; 
+	margin: 20px 0px;
 	height: 100px;
+	width:	676px;
+	background: white;
 }
 	#proj_logo
 	{
 		border: dotted gray 1px;
 		width: 220px;
+		height: 120px;
+		background: url(../images/logos/groups/adaptive.png) no-repeat;
 	}
 
 
@@ -291,8 +298,9 @@ ul li p{
 	.sorting_box fieldset
 	{
 		border:  none;
-		margin-top: 15px;
+		margin: 15px 0 0 0;
 		font-size: 14pt;
+		padding: 0;
 	}
 
 	.sorting_box #groups input
@@ -300,16 +308,19 @@ ul li p{
 		display: none;
 	}
 	
-	.sorting_box label
+	.sorting_box legend, .sorting_box label
 	{
 		cursor:pointer;
-		display:inline-block;
+		display:inline;
+		float: left;
 		font-size:12pt;
 		height:36px;
-		margin-right:5px;
-		margin-top:4px;
 		padding-right:11px;
-		padding-top:17px;
+	}
+	
+	.sorting_box label
+	{
+		font-size: 10pt;
 	}
 	
 	.sorting_box label.focused
@@ -319,14 +330,14 @@ ul li p{
 		/* unchecked labels */
 		label#all
 		{
+			width: 0;
+			padding: 0;
+			white-space: nowrap;
+			overflow: hidden;
 		}
 		
 		label#rim
 		{
-			background-image: url(../images/rim.gif);
-			background-repeat: no-repeat;
-			width: 105px;
-			padding-left: 105px;	
 		}
 		
 		label#omnr
