@@ -303,7 +303,7 @@ ul li p{
 		padding: 0;
 	}
 
-	.sorting_box #groups input
+	.sorting_box input
 	{
 		display: none;
 	}
@@ -313,27 +313,40 @@ ul li p{
 		cursor:pointer;
 		display:inline;
 		float: left;
-		font-size:12pt;
-		height:36px;
+		font-size:11pt;
 		padding-right:11px;
+	}
+	
+	.sorting_box legend#view, label#all
+	{
+		width: 0;
+		padding: 0;
+		overflow: hidden;
+		white-space: nowrap;
 	}
 	
 	.sorting_box label
 	{
 		font-size: 10pt;
+		padding-top: 2px;
+		vertical-align: bottom;
+		color: 			white;
+	}
+	
+	.sorting_box label:hover
+	{
+		color: #88CCE3;	
 	}
 	
 	.sorting_box label.focused
 	{
-	    background-color: #EEEEEE;
+	    color: #88CCE3;
+	    cursor: default;
 	}
 		/* unchecked labels */
 		label#all
 		{
-			width: 0;
-			padding: 0;
-			white-space: nowrap;
-			overflow: hidden;
+			padding-top: 2px;
 		}
 		
 		label#rim
@@ -402,15 +415,12 @@ ul.image-grid li {
   float:left;
   height:80px;
   padding:0;
-  margin-bottom:9px;
-  margin-left:9px;
-  margin-right:1px;
-  margin-top:0;
-  overflow-x:hidden;
-  overflow-y:hidden;
+  margin: 1px 0 9px 9px;
+  overflow:hidden;
   text-align:center;
   width:80px;
   position:relative;
+  cursor: pointer; 
 /*  overflow: hidden;
 */}
 

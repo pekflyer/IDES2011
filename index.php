@@ -69,6 +69,7 @@
 			var $projectContent = $('#proj_content');
 			$projects.hide(); // hide at start
 			$projectContent.hide();
+			$('.sorting_box legend#view').css('width', 0);
 			$('label#all').css('width', 0);
 			
 			// clone students to get a second collection
@@ -120,6 +121,7 @@
 					$projects.delay(601).slideDown("slow");
 					$projectContent.delay(601).slideDown("slow");
 					$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
+					$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
 					
 				}
 				else 
@@ -127,6 +129,7 @@
 					setTimeout(runQuicksand, 600);
 					$projects.slideUp("slow");
 					$projectContent.slideUp("slow");
+					$('.sorting_box legend#view').animate({ width: 0, padding: 0}, "slow");
 					$('label#all').animate({ width: 0, padding: 0}, "slow");
 				}		
 			}
@@ -166,15 +169,15 @@
 		);
 		
 		//highlight the selected view option
-		$('.sorting_box #groups :radio').focus(updateSelectedStyle);
-   		$('.sorting_box #groups :radio').blur(updateSelectedStyle);
-    	$('.sorting_box #groups :radio').change(updateSelectedStyle);
+		$('.sorting_box :radio').focus(updateSelectedStyle);
+   		$('.sorting_box :radio').blur(updateSelectedStyle);
+    	$('.sorting_box :radio').change(updateSelectedStyle);
 		
 		function updateSelectedStyle() 
     	{
     		
-	        $('.sorting_box #groups :radio').parent().removeClass('focused');//.next().removeClass('focused');
-	        $('.sorting_box #groups :radio:checked').parent().addClass('focused');//.next().addClass('focused');
+	        $('.sorting_box :radio').parent().removeClass('focused');//.next().removeClass('focused');
+	        $('.sorting_box :radio:checked').parent().addClass('focused');//.next().addClass('focused');
 	    }
 	});
 		
@@ -235,23 +238,22 @@
 			      </div>
 			      <div class="sorting_box" id="filter">
 			            <fieldset id="groups">
-			              <legend>View:</legend>
+			              <legend id="view">View:</legend>
 			              <label id="all"><input type="radio" name="group" value="all" checked="checked">All Students</label>
                           <legend>By group:</legend>
                           <div id="groupBox">
 			              <label id="rim"><input type="radio" name="group" value="rim">Mobile Life</label>
-			              <label id="omnr"><input type="radio" name="group" value="omnr">OMNR: Firetactics</label>
-			              <label id="cpc"><input type="radio" name="group" value="cpc">CPC: Adaptive Sports</label>
-			              <label id="st"><input type="radio" name="group" value="st">Smart Technologies: </label>
-			              <label id="lt"><input type="radio" name="group" value="lt">Lota Renovación</label>
+			              <label id="omnr"><input type="radio" name="group" value="omnr">Firetactics</label>
+			              <label id="cpc"><input type="radio" name="group" value="cpc">Adaptive Sports</label>
+			              <label id="st"><input type="radio" name="group" value="st">connectED</label>
+			              <label id="lt"><input type="radio" name="group" value="lt">LOTA</label>
                           <label id="Teknion"><input type="radio" name="group" value="Teknion">Workspace Next</label>
                           </div>
 			            </fieldset>
 			            <fieldset id="fullnames">
-			              <legend>Sort by Name</legend>
-			              <label><input type="radio" name="sort" value="first" checked="checked">First</label>
-			              <label><input type="radio" name="sort" value="last">Last</label>
-			              <label><input type="radio" name="sort" value="last">All</label>      
+			              <legend>Sort by Name:</legend>
+			              <label class="focused"><input type="radio" name="sort" value="first" checked="checked">First</label>
+			              <label><input type="radio" name="sort" value="last">Last</label>     
 			            </fieldset>
 					</div>
 			    </div>
