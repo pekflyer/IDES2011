@@ -19,6 +19,7 @@
 
 <body>
 	<script>
+		// Alphabetic Sorting
 		(function($) 
 		{
 			$.fn.sorted = function(customOptions) 
@@ -26,30 +27,32 @@
 				var options = 
 				{
 			  		reversed: false,
-			  		by: function(a) { return a.text(); 
-				}
+			  		by: function(a) 
+			  		{ 
+			  			return a.text(); 
+					}
+				};
+				
+				$.extend(options, customOptions);
+				$data = $(this);
+				arr = $data.get();
+				
+				arr.sort(function(a, b) 
+				{
+					var valA = options.by($(a));
+				  	var valB = options.by($(b));
+				  	if (options.reversed) 
+				  	{
+						return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;		
+				  	} 
+				  	else 
+				  	{		
+						return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
+				  	}
+				});
+				
+				return $(arr);
 			};
-			
-			$.extend(options, customOptions);
-			$data = $(this);
-			arr = $data.get();
-			
-			arr.sort(function(a, b) 
-			{
-				var valA = options.by($(a));
-			  	var valB = options.by($(b));
-			  	if (options.reversed) 
-			  	{
-					return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;				
-			  	} 
-			  	else 
-			  	{		
-					return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
-			  	}
-			});
-			
-			return $(arr);
-		};
 		})(jQuery);
 		
 		
@@ -67,7 +70,9 @@
 			var $transitionType;
 			var $projects = $('#projects_info');
 			var $projectContent = $('#proj_content');
-			$projects.hide(); // hide at start
+			
+			// hide at start
+			$projects.hide(); 
 			$projectContent.hide();
 			$('.sorting_box legend#view').css('width', 0);
 			$('label#all').css('width', 0);
@@ -75,7 +80,6 @@
 			// clone students to get a second collection
 			var $data = $students.clone();
 			
-			// attempt to call Quicksand on every form change
 			$filterGroup.add($filterSort).change(function(e) 
 			{
 				if ($($filterGroup+':checked').val() == 'all') 
@@ -100,6 +104,7 @@
 						}
 					});
 				}
+				
 				// sorted by last name
 				else if ($('#filter input[name="sort"]:checked').val() == "last") 
 				{
@@ -113,7 +118,8 @@
 					});
 			}  
 	
-			function reOrganize(delay)
+			// run changes
+			function reOrganize()
 			{
 				if($transitionType == "In") 
 				{
@@ -134,7 +140,7 @@
 				}		
 			}
 			
-			//Quicksand
+			// Quicksand
 			function runQuicksand()
 			{
 				$students.quicksand($sortedData, 
@@ -142,7 +148,6 @@
 					duration: 600,
 					easing: 'easeInOutQuad'
 				});
-				
 			}
 			
 			reOrganize();
@@ -156,7 +161,7 @@
 		maxWidth = 740;
 		minWidth = 30;	
 		
-		//main navigation
+		// main navigation
 		$("ul.mainContent li.mainNav").mousedown
 		(
 			function()
@@ -168,17 +173,95 @@
 			}
 		);
 		
-		//highlight the selected view option
-		$('.sorting_box :radio').focus(updateSelectedStyle);
-   		$('.sorting_box :radio').blur(updateSelectedStyle);
+		// highlight the selected view option
+		$('.sorting_box :radio').blur(updateSelectedStyle);
     	$('.sorting_box :radio').change(updateSelectedStyle);
-		
+		$('.sorting_box :radio').focus(updateSelectedStyle);
+   		
+   		
+   		//change button style and get group info
 		function updateSelectedStyle() 
     	{
+    		var $groupName = $(this).attr('value');
     		
-	        $('.sorting_box :radio').parent().removeClass('focused');//.next().removeClass('focused');
-	        $('.sorting_box :radio:checked').parent().addClass('focused');//.next().addClass('focused');
+    		//ensure only actual groups can need to use ajax
+    		if($groupName != "all" && $groupName != "first" && $groupName != "last")
+    		{
+    			getGroupInfo($groupName);
+	    	}
+    		
+    		$('.sorting_box :radio').parent().removeClass('focused');
+	        $('.sorting_box :radio:checked').parent().addClass('focused');
 	    }
+	    
+	    //ajax call to get group information
+	    function getGroupInfo(groupNam)
+	    {
+	    	var $groupID = 0;
+	    	var $groupLogo = "adaptive"; //default
+    		switch(groupNam)
+    		{
+    			case "rim":
+    				$groupID =1;
+    				$groupLogo = "mobile";
+    				break;
+    			case "omnr":
+    				$groupID =2;
+    				$groupLogo = "firetactics";
+    				break;
+    			case "cpc":
+    				$groupID =3;
+    				$groupLogo = "adaptive";
+    				break;
+    			case "st":
+    				$groupID =4;
+    				$groupLogo = "connectED";
+    				break;
+    			case "lt":
+    				$groupID =5;
+    				$groupLogo = "lota";
+    				break;
+    			case "Teknion":
+    				$groupID =6;
+    				$groupLogo = "workspace";
+    				break;
+    			default:
+    				break;
+    		};
+    		
+    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$groupLogo+".png)");
+    		//alert($groupID);
+			    		
+    		// Assign handlers immediately after making the request,
+			// and remember the jqxhr object for this request
+			/*var jqxhr = $.ajax({ url: "functions-db.php" })
+			    .success(function() { alert("success"); })
+			    .error(function() { alert("error"); })
+			    .complete(function() { alert("complete"); });
+			
+			// perform other work here ...
+			
+			// Set another completion function for the request above
+			jqxhr.complete(function(){ alert("second complete"); });
+			
+			
+			bodyContent = $.ajax
+			(
+				{
+			      url: "functions-db.php",
+			      global: false,
+			      type: "POST",
+			      data: ({id : this.getAttribute('id')}),
+			      dataType: "html",
+			      async:false,
+			      success: function(msg){
+			         alert(msg);
+			      }
+			   }
+			).responseText;
+			*/
+		}
+	    	    
 	});
 		
 	</script>	
@@ -208,17 +291,17 @@
 			  <div class="nav" id="nav_projects">
 			    <div class="content">
 			    	<div id="projects_info">
-			    		<div id="proj_group">
-			    			<h3 id="proj_name"></h3>
-			    			<h1 id="proj_client"></h1>
-			    		</div>
+						<div id="proj_group">
+							<h3 id="proj_name"></h3>
+							<h1 id="proj_client"></h1>
+						</div>
 			    		<div id="project_nav">
-			    			<div id="prevProj"></div>
-			    			<div id="nextProj"></div>
+			    			<a id="prevProj"></a>
+			    			<a id="nextProj"></a>
 			    		</div>
 			    	</div>			    
-			      <ul id="students" class="image-grid">         
-                	<?php
+					<ul id="students" class="image-grid">         
+					<?php
 					 	$query =  $db_control->query_getStudents();
 						$i=1;
 						while($row = mysql_fetch_array($query))
@@ -231,30 +314,32 @@
 							$i++;
 						}
 					?>
-			
-			      </ul>
-			      <div id="proj_content">
-			      	<div id="proj_logo"></div>
-			      </div>
-			      <div class="sorting_box" id="filter">
-			            <fieldset id="groups">
-			              <legend id="view">View:</legend>
-			              <label id="all"><input type="radio" name="group" value="all" checked="checked">All Students</label>
-                          <legend>By group:</legend>
-                          <div id="groupBox">
-			              <label id="rim"><input type="radio" name="group" value="rim">Mobile Life</label>
-			              <label id="omnr"><input type="radio" name="group" value="omnr">Firetactics</label>
-			              <label id="cpc"><input type="radio" name="group" value="cpc">Adaptive Sports</label>
-			              <label id="st"><input type="radio" name="group" value="st">connectED</label>
-			              <label id="lt"><input type="radio" name="group" value="lt">LOTA</label>
-                          <label id="Teknion"><input type="radio" name="group" value="Teknion">Workspace Next</label>
-                          </div>
-			            </fieldset>
-			            <fieldset id="fullnames">
-			              <legend>Sort by Name:</legend>
-			              <label class="focused"><input type="radio" name="sort" value="first" checked="checked">First</label>
-			              <label><input type="radio" name="sort" value="last">Last</label>     
-			            </fieldset>
+					</ul>
+					<div id="proj_content">
+						<div id="proj_logo"></div>
+					</div>
+					<div class="sorting_box" id="filter">
+						<fieldset id="groups">
+							<legend id="view">View:</legend>
+							<label id="all">
+								<input type="radio" name="group" value="all" checked="checked">All Students</label>
+							<legend>By group:</legend>
+							<div id="groupBox">
+								<label id="rim"><input type="radio" name="group" value="rim">Mobile Life</label>
+								<label id="omnr"><input type="radio" name="group" value="omnr">Firetactics</label>
+								<label id="cpc"><input type="radio" name="group" value="cpc">Adaptive Sports</label>
+								<label id="st"><input type="radio" name="group" value="st">connectED</label>
+								<label id="lt"><input type="radio" name="group" value="lt">LOTA</label>
+								<label id="Teknion"><input type="radio" name="group" value="Teknion">Workspace Next</label>
+							</div>
+						</fieldset>
+					    <fieldset id="fullnames">
+							<legend>Sort by Name:</legend>
+							<label class="focused">
+								<input type="radio" name="sort" value="first" checked="checked">First</label>
+							<label>
+								<input type="radio" name="sort" value="last">Last</label>     
+					    </fieldset>
 					</div>
 			    </div>
 			  </div>

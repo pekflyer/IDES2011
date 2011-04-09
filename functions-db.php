@@ -59,10 +59,17 @@ class dataBase
 	/*
 	*
 	*
-	*/
-	function query_forGroupPage()
-	{
 	
+	if(isset($_POST['action']) && !empty($_POST['action'])) 
+	{
+    	$grpID = $_POST['action'];
+    	query_forGroupPage($grpID);
+    }
+    */
+	function query_forGroupPage($group_ID)
+	{
+		$query_string =  sprintf('SELECT * FROM groupTable WHERE grp_id = %d',$group_ID);
+		$query = mysql_query($query_string, $this->mysqlConnec);
 	}
 	
 	/*
