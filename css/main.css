@@ -212,18 +212,19 @@ ul li p{
 		height: 81px;
 	}
 	
-	h3#proj_name
+	h1#proj_name
 	{
-		margin-top: 0px;
-		height: 40px;
-		background: aqua;
+		font-weight:normal;
+		height:40px;
+		margin-bottom:0;
+		margin-top:0;
 	}
 	
-	h1#proj_client
+	h3#proj_client
 	{
-		margin: 16px 0;
+		font-weight:normal;
+		margin: 0;
 		height: 20px;
-		background: black;
 	}
 
 	#project_nav
@@ -286,6 +287,9 @@ ul li p{
 		width: 200px;
 		height: 140px;
 		margin-left: 20px;
+		margin-right: 20px;
+		display: inline-block;
+		float: left;
 		background: url(../images/logos/groups/adaptive.png) no-repeat;
 	}
 

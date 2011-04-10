@@ -19,144 +19,149 @@
 
 <body>
 	<script>
-		// Alphabetic Sorting
-		(function($) 
+		
+	
+	
+	jQuery(document).ready
+	(
+		function() 
 		{
-			$.fn.sorted = function(customOptions) 
-		  	{
-				var options = 
-				{
-			  		reversed: false,
-			  		by: function(a) 
-			  		{ 
-			  			return a.text(); 
-					}
-				};
-				
-				$.extend(options, customOptions);
-				$data = $(this);
-				arr = $data.get();
-				
-				arr.sort(function(a, b) 
-				{
-					var valA = options.by($(a));
-				  	var valB = options.by($(b));
-				  	if (options.reversed) 
-				  	{
-						return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;		
-				  	} 
-				  	else 
-				  	{		
-						return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
-				  	}
-				});
-				
-				return $(arr);
-			};
-		})(jQuery);
-		
-		
-		// DOMContentLoaded
-		$(function() 
-		{	
-			// bind radiobuttons in the form
-			var $filterGroup = $('#filter input[name="group"]');
-			var $filterSort = $('#filter input[name="sort"]');
-			
-			// get the first collection
-			var $students = $('#students');
-			
-			// get projects container
-			var $transitionType;
-			var $projects = $('#projects_info');
-			var $projectContent = $('#proj_content');
-			
-			// hide at start
-			$projects.hide(); 
-			$projectContent.hide();
-			$('.sorting_box legend#view').css('width', 0);
-			$('label#all').css('width', 0);
-			
-			// clone students to get a second collection
-			var $data = $students.clone();
-			
-			$filterGroup.add($filterSort).change(function(e) 
+			// Alphabetic Sorting
+			(function($) 
 			{
-				if ($($filterGroup+':checked').val() == 'all') 
-				{
-					$transitionType = "Out";
-					var $filteredData = $data.find('li');
-				} 
-				else 
-				{
-					$transitionType = "In";
-					var $filteredData = $data.find('li[data-type=' + $($filterGroup+":checked").val() + ']');
-				}
-			
-				// sorted by first name
-				if ($('#filter input[name="sort"]:checked').val() == "first") 
-				{
-					var $sortedData = $filteredData.sorted(
+				$.fn.sorted = function(customOptions) 
+			  	{
+					var options = 
 					{
-						by: function(v) 
-						{
-							return $(v).find('strong').text().toLowerCase();
+				  		reversed: false,
+				  		by: function(a) 
+				  		{ 
+				  			return a.text(); 
 						}
+					};
+					
+					$.extend(options, customOptions);
+					$data = $(this);
+					arr = $data.get();
+					
+					arr.sort(function(a, b) 
+					{
+						var valA = options.by($(a));
+					  	var valB = options.by($(b));
+					  	if (options.reversed) 
+					  	{
+							return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;		
+					  	} 
+					  	else 
+					  	{		
+							return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
+					  	}
+					});
+					
+					return $(arr);
+				};
+			})(jQuery);
+			
+			
+			// DOMContentLoaded
+			$(function() 
+			{	
+				// bind radiobuttons in the form
+				var $filterGroup = $('#filter input[name="group"]');
+				var $filterSort = $('#filter input[name="sort"]');
+				
+				// get the first collection
+				var $students = $('#students');
+				
+				// get projects container
+				var $transitionType;
+				var $projects = $('#projects_info');
+				var $projectContent = $('#proj_content');
+				
+				// hide at start
+				$projects.hide(); 
+				$projectContent.hide();
+				$('.sorting_box legend#view').css('width', 0);
+				$('label#all').css('width', 0);
+				
+				// clone students to get a second collection
+				var $data = $students.clone();
+				
+				$filterGroup.add($filterSort).change(function(e) 
+				{
+					if ($($filterGroup+':checked').val() == 'all') 
+					{
+						$transitionType = "Out";
+						var $filteredData = $data.find('li');
+					} 
+					else 
+					{
+						$transitionType = "In";
+						var $filteredData = $data.find('li[data-type=' + $($filterGroup+":checked").val() + ']');
+					}
+				
+					// sorted by first name
+					if ($('#filter input[name="sort"]:checked').val() == "first") 
+					{
+						var $sortedData = $filteredData.sorted(
+						{
+							by: function(v) 
+							{
+								return $(v).find('strong').text().toLowerCase();
+							}
+						});
+					}
+					
+					// sorted by last name
+					else if ($('#filter input[name="sort"]:checked').val() == "last") 
+					{
+						// if sorted by last name
+					  	var $sortedData = $filteredData.sorted(
+					  	{
+							by: function(v) 
+							{
+								return $(v).find('div[data-type="last"]').text().toLowerCase();
+							}
+						});
+				}  
+		
+				// run changes
+				function reOrganize()
+				{
+					if($transitionType == "In") 
+					{
+						runQuicksand();
+						$projects.delay(601).slideDown("slow");
+						$projectContent.delay(601).slideDown("slow");
+						$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
+						$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
+						
+					}
+					else 
+					{
+						setTimeout(runQuicksand, 600);
+						$projects.slideUp("slow");
+						$projectContent.slideUp("slow");
+						$('.sorting_box legend#view').animate({ width: 0, paddingRight: 0}, "slow");
+						$('label#all').animate({ width: 0, paddingRight: 0}, "slow");
+					}		
+				}
+				
+				// Quicksand
+				function runQuicksand()
+				{
+					$students.quicksand($sortedData, 
+					{
+						duration: 600,
+						easing: 'easeInOutQuad'
 					});
 				}
 				
-				// sorted by last name
-				else if ($('#filter input[name="sort"]:checked').val() == "last") 
-				{
-					// if sorted by last name
-				  	var $sortedData = $filteredData.sorted(
-				  	{
-						by: function(v) 
-						{
-							return $(v).find('div[data-type="last"]').text().toLowerCase();
-						}
-					});
-			}  
-	
-			// run changes
-			function reOrganize()
-			{
-				if($transitionType == "In") 
-				{
-					runQuicksand();
-					$projects.delay(601).slideDown("slow");
-					$projectContent.delay(601).slideDown("slow");
-					$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
-					$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
-					
-				}
-				else 
-				{
-					setTimeout(runQuicksand, 600);
-					$projects.slideUp("slow");
-					$projectContent.slideUp("slow");
-					$('.sorting_box legend#view').animate({ width: 0, padding: 0}, "slow");
-					$('label#all').animate({ width: 0, padding: 0}, "slow");
-				}		
-			}
-			
-			// Quicksand
-			function runQuicksand()
-			{
-				$students.quicksand($sortedData, 
-				{
-					duration: 600,
-					easing: 'easeInOutQuad'
-				});
-			}
-			
-			reOrganize();
+				reOrganize();
+			});
 		});
-	});
 	
 	
-	jQuery(document).ready(function() 
-	{
 		lastBlock = $("#home");
 		maxWidth = 740;
 		minWidth = 30;	
@@ -194,74 +199,57 @@
 	        $('.sorting_box :radio:checked').parent().addClass('focused');
 	    }
 	    
-	    //ajax call to get group information
+	    
+	    // get group information
 	    function getGroupInfo(groupNam)
 	    {
 	    	var $groupID = 0;
 	    	var $groupLogo = "adaptive"; //default
-    		switch(groupNam)
-    		{
-    			case "rim":
-    				$groupID =1;
-    				$groupLogo = "mobile";
-    				break;
-    			case "omnr":
-    				$groupID =2;
-    				$groupLogo = "firetactics";
-    				break;
-    			case "cpc":
-    				$groupID =3;
-    				$groupLogo = "adaptive";
-    				break;
-    			case "st":
-    				$groupID =4;
-    				$groupLogo = "connectED";
-    				break;
-    			case "lt":
-    				$groupID =5;
-    				$groupLogo = "lota";
-    				break;
-    			case "Teknion":
-    				$groupID =6;
-    				$groupLogo = "workspace";
-    				break;
-    			default:
-    				break;
-    		};
+	    	var $groupName = "";
+	    	var $groupClient = "";
+	    	var $groupAbstract = "";
+	    	
+	    	<?php
+	    	echo 'switch(groupNam){';
+	    		
+		    	 	$query =  $db_control->query_forGroupHome();
+					$i=1;
+					while($row = mysql_fetch_array($query))
+					{ 
+						echo 'case "'.$row['grp_tag'].'":';
+						echo " \n"; 
+						echo '$groupID = '.$i.';';
+						echo " \n"; 
+						echo '$groupLogo = "'.$row['grp_name'].'";';
+						echo " \n"; 
+						echo '$groupName = "'.$row['grp_name'].'";';
+						echo " \n";
+						echo '$groupClient = "Client: '.$row['grp_client'].'";';
+						echo " \n"; 
+						echo '$groupAbstract = "'.$row['grp_abstract'].'";';
+						echo " \n"; 
+						echo "break;\n";
+						$i++;
+					}
+				
+	    	echo '};';
+	    	?>
+	    	
+	    	// group name
+	    	$('h1#proj_name').html($groupName);
+	    	
+	    	// group client
+	    	$('h3#proj_client').html($groupClient);
+
+	    	// group abstract
+    		$('div#proj_content').html('<div id=\"proj_logo\"></div>'+$groupAbstract);
     		
-    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$groupLogo+".png)");
-    		//alert($groupID);
-			    		
-    		// Assign handlers immediately after making the request,
-			// and remember the jqxhr object for this request
-			/*var jqxhr = $.ajax({ url: "functions-db.php" })
-			    .success(function() { alert("success"); })
-			    .error(function() { alert("error"); })
-			    .complete(function() { alert("complete"); });
-			
-			// perform other work here ...
-			
-			// Set another completion function for the request above
-			jqxhr.complete(function(){ alert("second complete"); });
-			
-			
-			bodyContent = $.ajax
-			(
-				{
-			      url: "functions-db.php",
-			      global: false,
-			      type: "POST",
-			      data: ({id : this.getAttribute('id')}),
-			      dataType: "html",
-			      async:false,
-			      success: function(msg){
-			         alert(msg);
-			      }
-			   }
-			).responseText;
-			*/
-		}
-	    	    
+    		// group logo (NEEDS TO BE AFTER!!!)
+    		var $grpLogo = $groupLogo.slice(0, $groupLogo.indexOf(' ')).toLowerCase();
+    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$grpLogo+".png)");
+    		
+    		//alert($grpLogo);	    		
+    	}	    
 	});
 		
 	</script>	
@@ -292,8 +280,8 @@
 			    <div class="content">
 			    	<div id="projects_info">
 						<div id="proj_group">
-							<h3 id="proj_name"></h3>
-							<h1 id="proj_client"></h1>
+							<h1 id="proj_name"></h1>
+							<h3 id="proj_client"></h3>
 						</div>
 			    		<div id="project_nav">
 			    			<a id="prevProj"></a>
