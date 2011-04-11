@@ -25,7 +25,7 @@ a:active {color:#01678d;}  /* selected link */
 div.full
 {	
 	width: 960px;
-	height: 1000px;
+	height: 570px;
 	margin-top: 0px;
   	margin-right: auto;
 	margin-bottom: auto;
@@ -50,7 +50,7 @@ ul.mainContent li{
   padding: 10px;
   margin-right: 0px;
   background-color:#f6f6f6;
-  height: 880px;
+  height: 570px;
   width:30px;
   overflow:hidden;
 }
@@ -66,7 +66,8 @@ div.nav
 {
 	width: 30px;
 	height: 490px;
-	margin-top: 10px;
+	margin-top: 10px;	
+	cursor: pointer;
 }
 
 #nav_home
@@ -100,7 +101,7 @@ div.nav
 
 ul.mainContent li span
 {
-	font-family: PLOVR;
+	font-family: Titil;
 /*	writing-mode: tb-rl;
 	-webkit-transform: rotate(90deg); 
 	-moz-transform: rotate(90deg);
@@ -155,6 +156,7 @@ ul.mainContent li span
 	margin-left: 50px;
 	width: 790px;
 	height: 525px;
+	cursor: default;
 }
 
 #theme
@@ -198,7 +200,7 @@ ul li p{
 
 #projects_info
 {
-	height: 100px;
+	height: 64px;
 	width: 700px;
 	overflow: hidden;
 	color: white;
@@ -209,7 +211,6 @@ ul li p{
 		display: block;
 		float: left;
 		width: 454px;
-		height: 81px;
 	}
 	
 	h1#proj_name
@@ -277,7 +278,7 @@ ul li p{
 	/*border-bottom: #46B9D9 solid 2px;*/
 	padding: 20px 0px; 
 	margin: 20px 0px;
-	height: 200px;
+	height: auto;
 	width:	676px;
 	background: white;
 }

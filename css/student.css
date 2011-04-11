@@ -1,0 +1,154 @@
+@charset "UTF-8";
+/* CSS Document */
+
+@font-face
+{
+    font-family: Titil;
+    src: url('../fonts/TitilliumMaps26L-1wt.eot');
+    src: local(TitilliumMaps26L-1wt), url('../fonts/TitilliumMaps26L-1wt.ttf') format('opentype');
+}
+
+@font-face
+{
+    font-family: PLOVR;
+    src: url('../fonts/PLOVR.eot');
+    src: local(PLOVR), url('../fonts/PLOVR.ttf') format('opentype');
+}
+
+
+a:link {color:#ffffff; text-decoration:none;}      /* unvisited link */
+a:visited {color:#ffffff;}  /* visited link */
+a:hover {color:#CECECE;}  /* mouse over link */
+a:active {color:#CECECE;}  /* selected link */
+
+
+body
+{	
+	font-family:Titil, Georgia, Verdana;
+	width: 740px;
+	height: 500px;
+	background:#099ec9;
+	color: white;
+	padding: 0px 12px 10px 12px;
+}
+
+div.project_topbar
+{
+	width: 475px;
+	height: 70px;
+}
+
+h1, h3
+{
+	font-weight:normal;	
+	margin: 0;
+}
+
+div.project_prevnext
+{
+	top: 40px;
+	left: 495px;
+	width: 220px;
+	height: 50px;
+	font-size:12pt;
+}
+div.project_left
+{
+	display: inline-block;
+	float: left;
+	height: 350px;
+	font-size:9pt;
+	padding-right:10px;
+	width:90px;
+	color: #424242;
+}
+	div.project_left div
+	{
+		color: #FFFFFF;
+		padding-top: 8px;
+		font-size: 11pt;
+	}
+	
+	div.project_left div a
+	{
+		font-size: 10pt;
+	}
+	
+div.project_right
+{
+	display: inline-block;
+	float: right;
+	width: 320px;
+	height: 260px;
+	font-size:12pt;
+	font-style:normal;
+	color: white;
+}
+	div.project_right p
+	{
+		color: #EAEAEA;
+		margin: 0;
+		padding: 0;
+		padding-bottom: 5px;
+	}
+	
+	div.project_right p b
+	{
+		color: #FFFFFF;
+		margin: 0;
+		padding: 0;
+		padding-bottom: 5px;
+	}
+	
+
+div.bigimage
+{
+	display: inline;
+	float: left;
+	height: 330px;
+}
+div.bigimage img
+{
+	outline:none;
+	width:300px;
+	height:330px;
+	padding: 0;
+}
+
+div.smallimage
+{
+	display: inline;
+	float: left;
+	padding: 0;
+	padding-left: 20px;
+	width: 320px;
+	height: 80px;
+}
+div.portrait
+{
+	display: inline;
+	float: left;
+	padding-bottom: 5px;
+	font-size: 12pt;
+	margin-top:-8px;
+}
+	
+
+div.grp
+{
+	font-size:24pt;
+	font-style:italic;
+	line-height:100%;
+}
+
+div.stu
+{
+	font-size:16pt;
+	font-weight:bold;
+	line-height:100%;
+}
+img.small
+{
+	outline:none;
+	padding: 10 10 10 10;
+}

@@ -10,9 +10,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="css/main.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="all"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type="text/javascript"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js" type="text/javascript"></script>
 <script src="scripts/jquery.quicksand.js" type="text/javascript"></script>
+<script src="scripts/jquery.prettyPhoto.js" type="text/javascript"></script>
 
 <title>IDES Graduates 2011</title>
 </head>
@@ -80,6 +82,7 @@
 		
 			//----------------------------------------------
 			//	---------- Projects Navigation -------------
+		
 			// bind radiobuttons in the form
 			var $filterGroup = $('#filter input[name="group"]');
 			var $filterSort = $('#filter input[name="sort"]');
@@ -186,6 +189,8 @@
 			
 			$prevGroup.mousedown(function(){getGroup("prev")});
 			$nextGroup.mousedown(function(){getGroup("next")});
+			
+			$("a[rel^='prettyPhoto']").prettyPhoto(); 
 			
 			function getGroup(type)
 			{
@@ -311,8 +316,6 @@
 						{ 
 							echo 'case '.$row['grp_id'].':';
 							echo " \n"; 
-							//echo '$groupID = '.$i.';';
-							//echo " \n"; 
 							echo '$groupLogo = "'.$row['grp_name'].'";';
 							echo " \n"; 
 							echo '$groupName = "'.$row['grp_name'].'";';
@@ -359,7 +362,7 @@
 	    		$nextGroup.attr("data-type", $nextGrp);
 	    		
 	    		}	
-	    	});    
+	    	});   
 		});
 		
 	</script>	
@@ -405,7 +408,8 @@
 						while($row = mysql_fetch_array($query))
 						{ 
 							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'" title="'.$row["stu_fname"].' '.$row["std_lname"].'">';
-							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" />';
+							echo '<a rel="prettyPhoto[ajax]" href="student.php?std_id='.$row["stu_id"].'&iframe=true&width=800&height=510">';
+							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" /></a>';
 							echo '<div class="StuName"><strong>'. $row["stu_fname"] .'</strong> ';
 							echo '<div data-type="last">'.$row["std_lname"].'</div></div>';
 							echo '</li>';
