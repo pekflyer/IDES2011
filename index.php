@@ -20,30 +20,9 @@
 <body>
 	<script>
 		
-	
-	
-	jQuery(document).ready
-	(
+	jQuery(document).ready(
 		function() 
 		{
-		
-			lastBlock = $("#home");
-			maxWidth = 740;
-			minWidth = 30;	
-			
-			// main navigation
-			$("ul.mainContent li.mainNav").mousedown
-			(
-				function()
-				{
-					$(lastBlock).animate({width: minWidth+"px"}, { queue:false, duration:400});
-					
-					$(this).animate({width: maxWidth+"px"}, { queue:false, duration:400});
-					lastBlock = this;
-				}
-			);
-		
-		
 			// Alphabetic Sorting
 			(function($) 
 			{
@@ -80,17 +59,44 @@
 				};
 			})(jQuery);
 			
+			//-----------------------------------------
+			//	---------- Main Navigation -------------
+			lastBlock = $("#home");
+			maxWidth = 740;
+			minWidth = 30;	
 			
+			// main navigation
+			$("ul.mainContent li.mainNav").mousedown
+			(
+				function()
+				{
+					$(lastBlock).animate({width: minWidth+"px"}, { queue:false, duration:400});
+					
+					$(this).animate({width: maxWidth+"px"}, { queue:false, duration:400});
+					lastBlock = this;
+				}
+			);
+			
+		
+			//----------------------------------------------
+			//	---------- Projects Navigation -------------
+			// bind radiobuttons in the form
+			var $filterGroup = $('#filter input[name="group"]');
+			var $filterSort = $('#filter input[name="sort"]');
+			
+			// get all students images
+			var $students = $('#students');
+			var $studentsBackup; 
+			
+			var $groupToGet = 0;
+			var $currentGroup = 0;
+			var $prevGroup =  $('div#project_nav div#prevProj');
+		    var $nextGroup =  $('div#project_nav div#nextProj');
+		    
+		    
 			// DOMContentLoaded
 			$(function() 
 			{	
-				// bind radiobuttons in the form
-				var $filterGroup = $('#filter input[name="group"]');
-				var $filterSort = $('#filter input[name="sort"]');
-				
-				// get the first collection
-				var $students = $('#students');
-				
 				// get projects container
 				var $transitionType;
 				var $projects = $('#projects_info');
@@ -104,6 +110,7 @@
 				
 				// clone students to get a second collection
 				var $data = $students.clone();
+				$studentBackups = $data;
 				
 				// add change function to all radio btns
 				$filterGroup.add($filterSort).change(function(e) 
@@ -142,118 +149,218 @@
 								return $(v).find('div[data-type="last"]').text().toLowerCase();
 							}
 						});
-				}  
+					}  
 		
 		
-				if($transitionType == "In") 
-				{
-					runQuicksand();
-					$projects.delay(601).slideDown("slow");
-					$projectContent.delay(601).slideDown("slow");
-					$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
-					$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
-					
-				}
-				else 
-				{
-					setTimeout(runQuicksand, 600);
-					$projects.slideUp("slow");
-					$projectContent.slideUp("slow");
-					$('.sorting_box legend#view').animate({ width: 0, paddingRight: 0}, "slow");
-					$('label#all').animate({ width: 0, paddingRight: 0}, "slow");
-				}		
-				
-				
-				function runQuicksand()
-				{
-					$students.quicksand($sortedData, 
+					if($transitionType == "In") 
 					{
-						duration: 600,
-						easing: 'easeInOutQuad'
+						runQuicksand();
+						$projects.delay(601).slideDown("slow");
+						$projectContent.delay(601).slideDown("slow");
+						$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
+						$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
+						
+					}
+					else 
+					{
+						setTimeout(runQuicksand, 600);
+						$projects.slideUp("slow");
+						$projectContent.slideUp("slow");
+						$('.sorting_box legend#view').animate({ width: 0, paddingRight: 0}, "slow");
+						$('label#all').animate({ width: 0, paddingRight: 0}, "slow");
+					}		
+					
+					
+					function runQuicksand()
+					{
+						$students.quicksand($sortedData, 
+						{
+							duration: 600,
+							easing: 'easeInOutQuad'
+						});
+					}
+				
+				});
+			
+	
+			
+			$prevGroup.mousedown(function(){getGroup("prev")});
+			$nextGroup.mousedown(function(){getGroup("next")});
+			
+			function getGroup(type)
+			{
+				if(type == "prev")
+				{
+					$groupToGet = parseInt($prevGroup.attr("data-type"));
+					$currentGroup = $groupToGet == 6 ? 1 : $groupToGet+1;    		
+				}
+				else
+				{
+					$groupToGet = parseInt($nextGroup.attr("data-type"));
+					$currentGroup = $groupToGet == 1 ? 6 : $groupToGet-1;    			
+				}
+				
+				activateSelection();
+				getGroupInfo($groupToGet);
+				runQuicksand();
+				//update prev/next btn
+			}
+			
+			
+			function activateSelection()
+			{
+				var $currentRadioBtn = $('div#groupBox input[data-type="'+$currentGroup+'"]');
+				var $newRadioBtn = $('div#groupBox input[data-type="'+$groupToGet+'"]');
+	
+				//deactivate old
+				$currentRadioBtn.attr("checked", false);
+				$currentRadioBtn.parent().removeClass('focused');
+				
+				//activate new
+				$newRadioBtn.attr("checked", "checked");
+		        $newRadioBtn.parent().addClass('focused');
+		        
+		        //alert($currentRadioBtn.val());
+		        //alert($newRadioBtn.val());
+		        
+		    }
+			
+			
+			function runQuicksand()
+			{
+				// clone students to get a second collection
+				var $data = $studentBackups.clone();
+				
+				//alert($('#students').find('li').length);
+				
+				var $filteredData = $data.find('li[data-type=' + $($filterGroup+":checked").val() + ']');
+				
+					
+				// sorted by first name
+				if ($('#filter input[name="sort"]:checked').val() == "first") 
+				{
+					var $sortedData = $filteredData.sorted(
+					{
+						by: function(v) 
+						{
+							return $(v).find('strong').text().toLowerCase();
+						}
 					});
 				}
 				
-			});
-		});
-	
-	
-		
-		
-		// highlight the selected view option
-		$('.sorting_box :radio').blur(updateSelectedStyle);
-    	$('.sorting_box :radio').change(updateSelectedStyle);
-		$('.sorting_box :radio').focus(updateSelectedStyle);
-   		
-   		
-   		//change button style and get group info
-		function updateSelectedStyle() 
-    	{
-    		var $groupID = $(this).attr('data-type');
-    		$groupID = parseInt($groupID);
-    		
-    		//alert($groupID);
-    		//ensure only actual groups can need to use ajax
-    		if($groupID > 0 && $groupID <= 6)
-    		{
-    			getGroupInfo($groupID);
-	    	}
-    		
-    		$('.sorting_box :radio').parent().removeClass('focused');
-	        $('.sorting_box :radio:checked').parent().addClass('focused');
-	    }
-	    
-	    	
-	    // get group information
-	    function getGroupInfo(groupID)
-	    {
-	    	//var $groupID = 0;
-	    	var $groupLogo = ""; //default
-	    	var $groupName = "";
-	    	var $groupClient = "";
-	    	var $groupAbstract = "";
-	    	
-	    	<?php
-	    	echo 'switch(groupID){';
-	    		
-		    	 	$query =  $db_control->query_forGroupHome();
-					$i=1;
-					while($row = mysql_fetch_array($query))
-					{ 
-						echo 'case '.$row['grp_id'].':';
-						echo " \n"; 
-						//echo '$groupID = '.$i.';';
-						//echo " \n"; 
-						echo '$groupLogo = "'.$row['grp_name'].'";';
-						echo " \n"; 
-						echo '$groupName = "'.$row['grp_name'].'";';
-						echo " \n";
-						echo '$groupClient = "Client: '.$row['grp_client'].'";';
-						echo " \n"; 
-						echo '$groupAbstract = "'.$row['grp_abstract'].'";';
-						echo " \n"; 
-						echo "break;\n";
-						$i++;
-					}
+				// sorted by last name
+				else if ($('#filter input[name="sort"]:checked').val() == "last") 
+				{
+					// if sorted by last name
+				  	var $sortedData = $filteredData.sorted(
+				  	{
+						by: function(v) 
+						{
+							return $(v).find('div[data-type="last"]').text().toLowerCase();
+						}
+					});
+				}
 				
-	    	echo '};';
-	    	?>
-	    	
-	    	// group name
-	    	$('h1#proj_name').html($groupName);
-	    	
-	    	// group client
-	    	$('h3#proj_client').html($groupClient);
-
-	    	// group abstract
-    		$('div#proj_content').html('<div id=\"proj_logo\"></div>'+$groupAbstract);
-    		
-    		// group logo (NEEDS TO BE AFTER!!!)
-    		$groupLogo = $groupLogo.slice(0, $groupLogo.indexOf(' ')).toLowerCase();
-    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$groupLogo+".png)");
-    		
-    		//alert($groupLogo);	    		
-    	}	    
-	});
+				$students.quicksand($sortedData, 
+				{
+					duration: 600,
+					easing: 'easeInOutQuad'
+				});
+			}	
+				
+			
+			// highlight the selected view option
+			$('.sorting_box :radio').blur(updateSelectedStyle);
+	    	$('.sorting_box :radio').change(updateSelectedStyle);
+			$('.sorting_box :radio').focus(updateSelectedStyle);
+	   		
+	   		
+	   		//change button style and get group info
+			function updateSelectedStyle() 
+	    	{
+	    		var $groupID = $(this).attr('data-type');
+	    		$groupID = parseInt($groupID);
+	    		
+	    		//alert($groupID);
+	    		//ensure only actual groups can need to use ajax
+	    		if($groupID > 0 && $groupID <= 6)
+	    		{
+	    			getGroupInfo($groupID);
+		    	}
+	    		
+	    		$('.sorting_box :radio').parent().removeClass('focused');
+		        $('.sorting_box :radio:checked').parent().addClass('focused');
+		    }
+		    
+		    	
+		    // get group information
+		    function getGroupInfo(groupID)
+		    {
+		    	//var $groupID = parseInt(groupID);
+		    	var $groupLogo = ""; //default
+		    	var $groupName = "";
+		    	var $groupClient = "";
+		    	var $groupAbstract = "";
+		    	
+		    	<?php
+		    	echo 'switch(groupID){';
+		    		
+			    	 	$query =  $db_control->query_forGroupHome();
+						$i=1;
+						while($row = mysql_fetch_array($query))
+						{ 
+							echo 'case '.$row['grp_id'].':';
+							echo " \n"; 
+							//echo '$groupID = '.$i.';';
+							//echo " \n"; 
+							echo '$groupLogo = "'.$row['grp_name'].'";';
+							echo " \n"; 
+							echo '$groupName = "'.$row['grp_name'].'";';
+							echo " \n";
+							echo '$groupClient = "Client: '.$row['grp_client'].'";';
+							echo " \n"; 
+							echo '$groupAbstract = "'.$row['grp_abstract'].'";';
+							echo " \n"; 
+							echo "break;\n";
+							$i++;
+						}
+					
+		    	echo '};';
+		    	?>
+		    	
+		    	// group name
+		    	$('h1#proj_name').fadeOut("fast", function(){
+    				$('h1#proj_name').html($groupName);
+    				$('h1#proj_name').fadeIn("fast");
+    			});
+    
+		    	// group client
+		    	$('h3#proj_client').fadeOut("fast", function(){
+		    		$('h3#proj_client').html($groupClient);
+    				$('h3#proj_client').fadeIn("fast");
+    			});
+    			
+    			// group logo and abstract
+	    		var $index = $groupLogo.indexOf(' ');
+	    		if($index == -1) $index = $groupLogo.length;
+	    		
+	    		$groupLogo = $groupLogo.slice(0, $index).toLowerCase();
+	    		$('div#proj_logo').fadeOut("fast", function() {
+	    			$('div#proj_content').html('<div id=\"proj_logo\"></div>'+$groupAbstract);
+    				$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$groupLogo+".png)");
+    				$('div#proj_logo').fadeIn("fast");
+    			});
+				
+				//update next/prev buttons
+	    		var $prevGrp = groupID == 1 ? 6 : groupID-1;
+	    		$prevGroup.attr("data-type", $prevGrp);
+	    			    		
+	    		var $nextGrp = groupID == 6 ? 1 : groupID+1;
+	    		$nextGroup.attr("data-type", $nextGrp);
+	    		
+	    		}	
+	    	});    
+		});
 		
 	</script>	
 	<div class="full">
@@ -287,8 +394,8 @@
 							<h3 id="proj_client"></h3>
 						</div>
 			    		<div id="project_nav">
-			    			<a id="prevProj"></a>
-			    			<a id="nextProj"></a>
+			    			<div id="prevProj"></div>
+			    			<div id="nextProj"></div>
 			    		</div>
 			    	</div>			    
 					<ul id="students" class="image-grid">         
@@ -313,7 +420,7 @@
 						<fieldset id="groups">
 							<legend id="view">View:</legend>
 							<label id="all">
-								<input type="radio" name="group" value="all" checked="checked">All Students</label>
+								<input type="radio" name="group" value="all" checked="checked" data-type="0">All Students</label>
 							<legend>By group:</legend>
 							<div id="groupBox">
 								<label id="rim"><input type="radio" name="group" value="rim" data-type="1">Mobile Life</label>
