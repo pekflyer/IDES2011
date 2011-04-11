@@ -26,6 +26,24 @@
 	(
 		function() 
 		{
+		
+			lastBlock = $("#home");
+			maxWidth = 740;
+			minWidth = 30;	
+			
+			// main navigation
+			$("ul.mainContent li.mainNav").mousedown
+			(
+				function()
+				{
+					$(lastBlock).animate({width: minWidth+"px"}, { queue:false, duration:400});
+					
+					$(this).animate({width: maxWidth+"px"}, { queue:false, duration:400});
+					lastBlock = this;
+				}
+			);
+		
+		
 			// Alphabetic Sorting
 			(function($) 
 			{
@@ -87,6 +105,7 @@
 				// clone students to get a second collection
 				var $data = $students.clone();
 				
+				// add change function to all radio btns
 				$filterGroup.add($filterSort).change(function(e) 
 				{
 					if ($($filterGroup+':checked').val() == 'all') 
@@ -125,29 +144,26 @@
 						});
 				}  
 		
-				// run changes
-				function reOrganize()
+		
+				if($transitionType == "In") 
 				{
-					if($transitionType == "In") 
-					{
-						runQuicksand();
-						$projects.delay(601).slideDown("slow");
-						$projectContent.delay(601).slideDown("slow");
-						$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
-						$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
-						
-					}
-					else 
-					{
-						setTimeout(runQuicksand, 600);
-						$projects.slideUp("slow");
-						$projectContent.slideUp("slow");
-						$('.sorting_box legend#view').animate({ width: 0, paddingRight: 0}, "slow");
-						$('label#all').animate({ width: 0, paddingRight: 0}, "slow");
-					}		
+					runQuicksand();
+					$projects.delay(601).slideDown("slow");
+					$projectContent.delay(601).slideDown("slow");
+					$('label#all').delay(601).animate({width: '68px', paddingRight: 15}, "slow");
+					$('.sorting_box legend#view').delay(601).animate({width: '29px', paddingRight: 15}, "slow");
+					
 				}
+				else 
+				{
+					setTimeout(runQuicksand, 600);
+					$projects.slideUp("slow");
+					$projectContent.slideUp("slow");
+					$('.sorting_box legend#view').animate({ width: 0, paddingRight: 0}, "slow");
+					$('label#all').animate({ width: 0, paddingRight: 0}, "slow");
+				}		
 				
-				// Quicksand
+				
 				function runQuicksand()
 				{
 					$students.quicksand($sortedData, 
@@ -157,26 +173,11 @@
 					});
 				}
 				
-				reOrganize();
 			});
 		});
 	
 	
-		lastBlock = $("#home");
-		maxWidth = 740;
-		minWidth = 30;	
 		
-		// main navigation
-		$("ul.mainContent li.mainNav").mousedown
-		(
-			function()
-			{
-				$(lastBlock).animate({width: minWidth+"px"}, { queue:false, duration:400});
-				
-				$(this).animate({width: maxWidth+"px"}, { queue:false, duration:400});
-				lastBlock = this;
-			}
-		);
 		
 		// highlight the selected view option
 		$('.sorting_box :radio').blur(updateSelectedStyle);
@@ -187,39 +188,41 @@
    		//change button style and get group info
 		function updateSelectedStyle() 
     	{
-    		var $groupName = $(this).attr('value');
+    		var $groupID = $(this).attr('data-type');
+    		$groupID = parseInt($groupID);
     		
+    		//alert($groupID);
     		//ensure only actual groups can need to use ajax
-    		if($groupName != "all" && $groupName != "first" && $groupName != "last")
+    		if($groupID > 0 && $groupID <= 6)
     		{
-    			getGroupInfo($groupName);
+    			getGroupInfo($groupID);
 	    	}
     		
     		$('.sorting_box :radio').parent().removeClass('focused');
 	        $('.sorting_box :radio:checked').parent().addClass('focused');
 	    }
 	    
-	    
+	    	
 	    // get group information
-	    function getGroupInfo(groupNam)
+	    function getGroupInfo(groupID)
 	    {
-	    	var $groupID = 0;
-	    	var $groupLogo = "adaptive"; //default
+	    	//var $groupID = 0;
+	    	var $groupLogo = ""; //default
 	    	var $groupName = "";
 	    	var $groupClient = "";
 	    	var $groupAbstract = "";
 	    	
 	    	<?php
-	    	echo 'switch(groupNam){';
+	    	echo 'switch(groupID){';
 	    		
 		    	 	$query =  $db_control->query_forGroupHome();
 					$i=1;
 					while($row = mysql_fetch_array($query))
 					{ 
-						echo 'case "'.$row['grp_tag'].'":';
+						echo 'case '.$row['grp_id'].':';
 						echo " \n"; 
-						echo '$groupID = '.$i.';';
-						echo " \n"; 
+						//echo '$groupID = '.$i.';';
+						//echo " \n"; 
 						echo '$groupLogo = "'.$row['grp_name'].'";';
 						echo " \n"; 
 						echo '$groupName = "'.$row['grp_name'].'";';
@@ -245,10 +248,10 @@
     		$('div#proj_content').html('<div id=\"proj_logo\"></div>'+$groupAbstract);
     		
     		// group logo (NEEDS TO BE AFTER!!!)
-    		var $grpLogo = $groupLogo.slice(0, $groupLogo.indexOf(' ')).toLowerCase();
-    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$grpLogo+".png)");
+    		$groupLogo = $groupLogo.slice(0, $groupLogo.indexOf(' ')).toLowerCase();
+    		$('div#proj_logo').css('background-image', "url(images/logos/groups/"+$groupLogo+".png)");
     		
-    		//alert($grpLogo);	    		
+    		//alert($groupLogo);	    		
     	}	    
 	});
 		
@@ -275,8 +278,8 @@
 			    </div>
 			  </div>    
       </li>
-			<li class="mainNav" id="projects" title="Projects">
-			  <div class="nav" id="nav_projects">
+			<li class="mainNav" id="projects">
+			  <div class="nav" id="nav_projects" title="Projects">
 			    <div class="content">
 			    	<div id="projects_info">
 						<div id="proj_group">
@@ -294,7 +297,7 @@
 						$i=1;
 						while($row = mysql_fetch_array($query))
 						{ 
-							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'">';
+							echo '<li data-id="id-'.$i.'" data-type="'.$row["grp_name"].'" title="'.$row["stu_fname"].' '.$row["std_lname"].'">';
 							echo '<img src="./images/students/'.$row["stu_fname"].'_'.$row["std_lname"].'.jpg" />';
 							echo '<div class="StuName"><strong>'. $row["stu_fname"] .'</strong> ';
 							echo '<div data-type="last">'.$row["std_lname"].'</div></div>';
@@ -313,12 +316,12 @@
 								<input type="radio" name="group" value="all" checked="checked">All Students</label>
 							<legend>By group:</legend>
 							<div id="groupBox">
-								<label id="rim"><input type="radio" name="group" value="rim">Mobile Life</label>
-								<label id="omnr"><input type="radio" name="group" value="omnr">Firetactics</label>
-								<label id="cpc"><input type="radio" name="group" value="cpc">Adaptive Sports</label>
-								<label id="st"><input type="radio" name="group" value="st">connectED</label>
-								<label id="lt"><input type="radio" name="group" value="lt">LOTA</label>
-								<label id="Teknion"><input type="radio" name="group" value="Teknion">Workspace Next</label>
+								<label id="rim"><input type="radio" name="group" value="rim" data-type="1">Mobile Life</label>
+								<label id="omnr"><input type="radio" name="group" value="omnr" data-type="2">Firetactics</label>
+								<label id="cpc"><input type="radio" name="group" value="cpc" data-type="3">Adaptive Sports</label>
+								<label id="st"><input type="radio" name="group" value="st" data-type="4">connectED</label>
+								<label id="lt"><input type="radio" name="group" value="lt" data-type="5">LOTA</label>
+								<label id="Teknion"><input type="radio" name="group" value="Teknion" data-type="6">Workspace Next</label>
 							</div>
 						</fieldset>
 					    <fieldset id="fullnames">
@@ -354,15 +357,15 @@ Please register at alumni.carleton.ca/events<br/>
 			    </div>	  
 			  </div>
 			</li>
-			<li class="mainNav" id="sponsor" title="Sponsors">
-			  <div class="nav" id="nav_sponsors">
+			<li class="mainNav" id="sponsor" >
+			  <div class="nav" id="nav_sponsors" title="Sponsors">
 			  		<div class="content">
                     	Sponsors + Thanks<br /><br />The School of Industrial Design and the 2010-11 Bachelor of Industrial Design graduating class would like to sincerely thank this year’s collaborators and sponsors for their contributions and support.          	
 			    	</div>	  
 			  	</div>  
 			</li>
-			<li class="mainNav" id="staff" title="Staff and Supporters">
-				<div class="nav" id="nav_staff">
+			<li class="mainNav" id="staff">
+				<div class="nav" id="nav_staff" title="Staff and Supporters">
 			  		<div class="content">
 			        	Staff + Support<br /><br />In addition to their sponsors, the 2010-11 Bachelor of Industrial Design graduating class would like to also thank the faculty and staff at the School of Industrial Design.
                        	<br /><br />
