@@ -34,7 +34,7 @@ div.full
 
 div.header
 {
-	background: url(../images/Header.gif) no-repeat;
+	background: url(../images/header/Header.gif) no-repeat;
 	height: 100px;	
 }
 
@@ -42,7 +42,7 @@ ul.mainContent
 {
   	list-style: none;
   	padding: 0;
-	font-family:Tahoma, Geneva, sans-serif;
+	font-family:Titil, Georgia, Verdana;
 }
 
 ul.mainContent li{
@@ -50,13 +50,13 @@ ul.mainContent li{
   padding: 10px;
   margin-right: 0px;
   background-color:#f6f6f6;
-  height: 570px;
+  height: 560px;
   width:30px;
   overflow:hidden;
 }
 
 ul.mainContent li a{
-  height: 525px;
+  height: 500px;
   width: 30px;
 }
 
@@ -66,33 +66,58 @@ div.nav
 {
 	width: 30px;
 	height: 490px;
-	margin-top: 10px;	
+	margin-top: 21px;	
 	cursor: pointer;
 }
 
 #nav_home
 {
-	background:url(../images/Nav/exhibit.png) no-repeat;
-	
+	background:url(../images/Nav/exhibit.png) no-repeat;	
 }
 
 #nav_projects
 {
-	background:url(../images/Nav/Student.png) no-repeat;
-	
+	background:url(../images/Nav/Student.png) no-repeat;	
 }
 
 #nav_alumni
 {
-	background:url(../images/Nav/alumni.png) no-repeat;
-	
+	background:url(../images/Nav/alumni.png) no-repeat;	
+	font-family: Titil, Georgia, Verdana;
+	font-size: 10.5pt;
+	line-height: 15pt;
 }
+	#nav_alumni p
+	{
+		padding:0 0 10px 0;
+		margin:0;
+		width:100%;
+	}
+	
+	#nav_alumni #AlumniTitle p
+	{
+		font-size: 12pt;
+	}
+	
+	#nav_alumni hr
+	{
+		
+		border:0;
+		height:2.5px;
+		color:#FFD27C;
+		background-color:#FFD27C;
+		margin-bottom:20px;
+	}
 
 #nav_sponsors
 {
 	background:url(../images/Nav/sponsors.png) no-repeat;
-
 }
+	#nav_sponsors p
+	{
+		font-size:10pt;
+		line-height:14pt;
+	}
 
 #nav_staff
 {
@@ -101,18 +126,8 @@ div.nav
 
 ul.mainContent li span
 {
-	font-family: Titil;
-/*	writing-mode: tb-rl;
-	-webkit-transform: rotate(90deg); 
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-    transform: rotate(90deg);*/
+	font-family: Titil, Georgia, Verdana;
 }
-
-/*ul.mainContent li img{
-  padding-left: 2px;
-  /*border: 1px solid #656565;
-}*/
 
 
 #home
@@ -120,11 +135,14 @@ ul.mainContent li span
   width: 740px;
   background:#c2d933;
 }
+	#home p#parking
+	{
+		font-size: 8pt;
+	}
 
 #projects
 {
-  	/*width: 840px; */
-	background:#099ec9;
+  	background:#099ec9;
 }
 
 #alumni
@@ -132,16 +150,94 @@ ul.mainContent li span
  	background:#fdba14;
 }
 
+	div#alumniTitle p
+	{
+		font-size: 12pt;
+	}
+	
+	#alumniMap
+	{
+		float:right;
+		margin:0;
+		width:490px;
+	}
+		#alumniMap p
+		{
+			padding-bottom: 10px;
+		}
+	
+	#alumniPics
+	{
+		width:160px;
+		text-align:center;
+	}
+	
+	#alumniPics img
+	{
+		padding-bottom:19px;
+	}
+	
+	#alumniPics #portrait
+	{
+		float: left;
+	}
+	
+	#alumniPics p
+	{
+		font-family:Titil, Georgia, Verdana;
+		text-align: center;
+		font-size:9pt;
+	}
+
 #sponsor
 {
 	background:#d0d0d0;
 }
+	#sponsor_LogoBox
+	{
+		width:550px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+	#sponsor_LogoBox img
+	{
+		display:inline-block;
+		float:left;
+		padding:0 10px 0 10px;
+	}
 
 #staff
 {
   	background:#5d5d5d;
 }
-
+	#staff_header
+	{
+		width:100%;
+		font-family:Georgia, "Times New Roman", Times, serif;
+	}
+	
+	#staff_faculty
+	{
+		display:block;
+		float:left;
+		width:50%;
+	}
+	
+	#staff_staff
+	{
+		display:block;
+		float:left;
+		width:50%;
+	}
+	
+	#staff .staff_type{
+		color:#999999;
+	}
+	
+	#staff .staff_smlTxt{
+		font-size:8pt;
+	}
 
 
 /* -------------------------- 
@@ -150,12 +246,12 @@ ul.mainContent li span
    
 .content
 {
-	font-family:Titil;
+	font-family:Titil, Georgia, Verdana;
 	margin-top: 0px;
 	padding-top: 0px;
 	margin-left: 50px;
-	width: 790px;
-	height: 525px;
+	width: 680px;
+	height: 500px;
 	cursor: default;
 }
 
@@ -169,29 +265,53 @@ ul.mainContent li span
 	padding-top:100px;
 }
 
+
 #map
 {
 	float:right;
-	margin-left:35px;
-	margin-right:35px;
+	width:293px;
 }
 
-#map p{
-	font:"Trebuchet MS", Arial, Helvetica, sans-serif;
-	font-size:18px;
-	margin:0;
-	width:inherit;
-	margin-top:15px;
-	margin-bottom:15px;
+	#map hr
+	{
+		border:0;
+		height:2.5px;
+		color:#D8E588;
+		background-color:#D8E588;
+		margin-top:23px;
+	}
+	
+	#map p
+	{
+		font-family: Titil, Georgia, Verdana;
+		font-size:14px;
+		margin:0;
+		width:inherit;
+		margin-bottom:8px;
+		padding-top:12px;
+	}
+
+ul.mainContent li a
+{
+	cursor: pointer;
 }
 
-ul li p{
+ul.mainContent li a:link, ul.mainContent li a:visited
+{
+	color:#FFF;
+}
+
+ul.mainContent li a:hover, ul.mainContent li a:active
+{
+	color:#5D5D5D;
+}
+/*ul li p{
   margin: 0;
   padding: 0;
   width: 210px;
   display: block;
   margin-left: 30px;
-}
+}*/
 
 
 /* -------------------------- 
@@ -200,8 +320,8 @@ ul li p{
 
 #projects_info
 {
-	height: 64px;
-	width: 700px;
+	height: 86px;
+	width: 680px;
 	overflow: hidden;
 	color: white;
 	
@@ -234,7 +354,6 @@ ul li p{
 		width: 170px;
 		display: block;
 		float: right;
-		margin-right: 20px;
 	}
 		#prevProj
 		{	
@@ -270,16 +389,22 @@ ul li p{
 			background: fuchsia;
 			background: url(../images/Nav/next_over.gif) no-repeat;
 		}
+	
+	#projects_info hr
+	{
+		margin-top:16px;
+		width:680px;
+		border: 0;
+		height: 2px;
+		background: #46B9D9;
+	}
 
 #proj_content
 {
 	overflow: hidden;
-	border-top: #46B9D9 solid 2px;
-	/*border-bottom: #46B9D9 solid 2px;*/
-	padding: 20px 0px; 
+	padding: 20px; 
 	margin: 20px 0px;
 	height: auto;
-	width:	676px;
 	background: white;
 }
 	#proj_logo
@@ -287,7 +412,6 @@ ul li p{
 		border: dashed lightgrey 2px;
 		width: 200px;
 		height: 140px;
-		margin-left: 20px;
 		margin-right: 20px;
 		display: inline-block;
 		float: left;
@@ -299,10 +423,16 @@ ul li p{
 .sorting_box
 {
 	display:block;
-	border-top: #46B9D9 solid 2px;
-	font-family: Titil;
-	width: 676px;
+	font-family: Titil, Georgia, Verdana;
 }
+	.content hr
+	{
+		height: 2px;
+		border: 0;
+		border-bottom: solid 2px #46B9D9;
+		
+	}
+	
 	.sorting_box fieldset
 	{
 		border:  none;
@@ -405,7 +535,8 @@ ul li p{
 /*/////// GALLERY //////////*/
 
 ul.image-grid {
-	padding: 15px 5px;
+	padding: 0;
+	padding-bottom: 5px;
 	width: 	700px;
 }
 
@@ -422,7 +553,7 @@ ul.image-grid li {
   float:left;
   height:80px;
   padding:0;
-  margin: 1px 0 9px 9px;
+  margin: 0 19px 9px 0;
   overflow:hidden;
   text-align:center;
   width:80px;
@@ -437,11 +568,12 @@ ul.image-grid li img{
 
 
 
-ul.image-grid li .StuName{
+ul.image-grid li .stuName{
 	position:absolute;
  	background-color:#333;
 	opacity:0.7;
 	filter:alpha(opacity=70);
+	font-size: 9pt;
 	bottom:0;
 	right:0;
 	width:100%;
@@ -450,8 +582,13 @@ ul.image-grid li .StuName{
 	color:#fff;
 	}
 
-.StuName strong, 
-.StuName span {
-
-	font-size:xx-small;  
+.stuName div{
+	display: none;
+}
+.stuName strong, 
+.stuName span {
+	font-size:10.5pt;
+	font-weight:normal;
+	height:39px;
+	line-height:18px; 
 }
