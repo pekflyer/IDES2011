@@ -34,7 +34,7 @@ div.full
 
 div.header
 {
-	background: url(../images/header/Header.gif) no-repeat;
+	background: url(../images/header/Header.gif) center no-repeat;
 	height: 100px;	
 }
 
