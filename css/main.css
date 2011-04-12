@@ -290,16 +290,17 @@ ul.mainContent li span
 #map
 {
 	float:right;
+	margin-top:16px;
 	width:293px;
 }
 
 	#map hr
 	{
+		margin-top: 6px;
 		border:0;
 		height:2.5px;
 		color:#D8E588;
 		background-color:#D8E588;
-		margin-top:23px;
 	}
 	
 	#map p
