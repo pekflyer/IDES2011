@@ -25,6 +25,7 @@ a:active {color:#01678d;}  /* selected link */
 div.full
 {	
 	width: 960px;
+	font-family: Titil, Georgia, Verdana;
 	height: 570px;
 	margin-top: 0px;
   	margin-right: auto;
@@ -34,9 +35,28 @@ div.full
 
 div.header
 {
-	background: url(../images/header/Header.gif) center no-repeat;
-	height: 100px;	
+	background: url(../images/header/Header.gif) no-repeat;
+	color:#828181;
+	font-family:Titil, Georgia, Verdana;
+	font-size:16pt;
+	font-weight:bold;
+	height:48px;
+	line-height:3pt;
+	margin-left:60px;
+	padding-left:384px;
+	padding-top:47px;
+	text-transform:uppercase;
+	width:517px;
 }
+	div.header .carleton_logo
+	{
+	
+		background: url(../images/header/Carleton_logo.gif) bottom right no-repeat;
+		display:inline-block;
+		height:28px;
+		margin-right:27px;
+		width:177px;
+	}
 
 ul.mainContent 
 {
@@ -210,11 +230,12 @@ ul.mainContent li span
 #staff
 {
   	background:#5d5d5d;
+  	color:#FFF;
+  	font-family: Titil, Georgia, Verdana;
 }
 	#staff_header
 	{
 		width:100%;
-		font-family:Georgia, "Times New Roman", Times, serif;
 	}
 	
 	#staff_faculty
@@ -233,10 +254,15 @@ ul.mainContent li span
 	
 	#staff .staff_type{
 		color:#999999;
+		display:inline-block;
+		padding-bottom:9px;
 	}
 	
 	#staff .staff_smlTxt{
 		font-size:8pt;
+		display: block;
+		padding-bottom: 4px;
+		padding-top:3px;
 	}
 
 
@@ -258,13 +284,10 @@ ul.mainContent li span
 #theme
 {
 	font-family:Titil;
-	/*width:840px;*/
-	/*height:1221px;*/
 	margin-left:0;
   	margin-right:auto;
 	padding-top:100px;
 }
-
 
 #map
 {
@@ -305,13 +328,6 @@ ul.mainContent li a:hover, ul.mainContent li a:active
 {
 	color:#5D5D5D;
 }
-/*ul li p{
-  margin: 0;
-  padding: 0;
-  width: 210px;
-  display: block;
-  margin-left: 30px;
-}*/
 
 
 /* -------------------------- 

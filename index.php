@@ -367,7 +367,11 @@
 		
 	</script>	
 	<div class="full">
-		<div class="header"></div>
+		<div class="header">
+			April 16th-19th, 10AM-5PM<br />
+			University Centre Galleria
+			<div class="carleton_logo"></div>
+		</div>
 		<ul class="mainContent">
 			<li class="mainNav" id="home" title="Home">
 				<div class="nav" id="nav_home"> 
