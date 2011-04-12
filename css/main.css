@@ -104,19 +104,13 @@ div.nav
 {
 	background:url(../images/Nav/alumni.png) no-repeat;	
 	font-family: Titil, Georgia, Verdana;
-	font-size: 10.5pt;
-	line-height: 15pt;
+	
 }
 	#nav_alumni p
 	{
 		padding:0 0 10px 0;
 		margin:0;
 		width:100%;
-	}
-	
-	#nav_alumni #AlumniTitle p
-	{
-		font-size: 12pt;
 	}
 	
 	#nav_alumni hr
@@ -169,7 +163,11 @@ ul.mainContent li span
 {
  	background:#fdba14;
 }
-
+	div#alumniTitle h1
+	{
+		margin-bottom: 0;
+	}
+	
 	div#alumniTitle p
 	{
 		font-size: 12pt;
